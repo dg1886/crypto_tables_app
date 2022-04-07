@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 import { Controller, useForm } from "react-hook-form";
 
 import Button from "../components/CommonUI/Button";
@@ -67,7 +66,7 @@ const LoginPage = () => {
             </FlexBox>
           )}
         />
-        <Button backColor={baseTheme.colors.pink} onClick={handleSubmit(onSubmit)}>Submit</Button>
+        <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
       </FlexBox>
     </FlexBox>
   );
