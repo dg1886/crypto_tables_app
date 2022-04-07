@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-import { baseTheme } from "../../styles/theme";
-
 const Text = styled.span`
-  color: ${baseTheme.colors.white};
-  letter-spacing: ${baseTheme.letterSpacing.default};
-  fonst-size: ${baseTheme.fontSize.normal};
+  color: ${({ theme }) => theme.colors.white};
+  letter-spacing: ${({ theme }) => theme.letterSpacing.default};
+  font-size: ${({ theme }) => theme.fontSize.normal};
   font-weight: 300;
-  margin: ${({ margin }) => margin || 0};
-  padding: ${({ padding }) => padding || 0};
+  margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
+  height:${({ height }) => height};
 `;
 
 export default Text;

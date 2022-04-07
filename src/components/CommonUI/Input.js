@@ -1,12 +1,10 @@
 import styled from "styled-components";
 
-import { baseTheme } from "../../styles/theme";
-
 const Input = styled.input`
-  width: ${({ width }) => width || baseTheme.inputSize.width};
-  height: ${({ height }) => height || baseTheme.inputSize.height};
-  background-color:${baseTheme.colors.grey};
-  color:${baseTheme.colors.white};
+  width: ${({ width, theme }) => width || theme.inputSize.width};
+  height: ${({ height, theme }) => height || theme.inputSize.height};
+  background-color:${({ theme }) => theme.colors.grey};
+  color:${({ theme }) => theme.colors.white};
   padding: 0 10px;
   margin: 10px 0;
   border: none;

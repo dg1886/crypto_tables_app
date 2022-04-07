@@ -14,7 +14,7 @@ export const baseTheme = {
   },
   inputSize: {
     height: "45px",
-    width: "350px",
+    width: "400px",
   },
   colors: {
     dark: "#080808",

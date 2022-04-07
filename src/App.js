@@ -1,10 +1,14 @@
+import { ThemeProvider } from "styled-components";
+
 import LoginPage from "./page/LoginPage";
+import { baseTheme } from "./styles/theme";
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={baseTheme}>
       <LoginPage />
-    </div>
+    </ThemeProvider>
+
   );
 }
 
