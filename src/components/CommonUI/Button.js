@@ -1,20 +1,14 @@
 import styled from "styled-components";
 
-const SButton = styled.div`
-  display: flex;
-  flex-direction:row;
-  justify-content:  "center";
-  align-items: "center";
-  background-color: ${(props) => (props.backColor ? props.backColor : props.theme.colors.secondary)};
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
-  margin: ${({ margin }) => margin || 0};
+const Button = styled.button`
+  background-color: ${({ backColor }) => (backColor)};
+  width: ${({ width }) => width || "250px"};
+  height: ${({ height }) => height || "50px"};
+  margin: ${({ margin }) => margin || "15px 0"};
   padding: ${({ padding }) => padding || 0};
   box-sizing:  "border-box";
+  border:none;
+  border-radius: 5px;
 `;
-
-const Button = ({ children }) => {
-  <SButton>{children}</SButton>;
-};
 
 export default Button;

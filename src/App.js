@@ -1,7 +1,9 @@
+import LoginPage from "./page/LoginPage";
+
 function App() {
   return (
     <div>
-      <span>Crypto app</span>
+      <LoginPage />
     </div>
   );
 }
