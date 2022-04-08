@@ -12,6 +12,7 @@ const FlexBox = styled.div`
   margin: ${({ margin }) => margin || 0};
   padding: ${({ padding }) => padding || 0};
   box-sizing: ${({ boxSizing }) => boxSizing || "border-box"};
+  z-index: ${({ zIndex }) => zIndex};
 `;
 
 export default FlexBox;
