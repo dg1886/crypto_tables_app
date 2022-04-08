@@ -1,8 +1,13 @@
+import { ThemeProvider } from "styled-components";
+
+import Header from "./components/Header";
+import { baseTheme } from "./styles/theme";
+
 function App() {
   return (
-    <div>
-      <span>Crypto app</span>
-    </div>
+    <ThemeProvider theme={baseTheme}>
+      <Header />
+    </ThemeProvider>
   );
 }
 

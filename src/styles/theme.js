@@ -13,8 +13,8 @@ export const baseTheme = {
     width: "30px",
   },
   colors: {
-    primary: "#080808",
-    secondary: "#0f0f0f",
+    dark: "#080808",
+    darkGrey: "#0f0f0f",
     white: "#ffffff",
     grey: "#1c1c1c",
     pink: "#e36d85",
