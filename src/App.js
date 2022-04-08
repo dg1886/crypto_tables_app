@@ -1,12 +1,12 @@
 import { ThemeProvider } from "styled-components";
 
-import LoginPage from "./page/LoginPage";
+import RegistrationPage from "./page/RegistrationPage";
 import { baseTheme } from "./styles/theme";
 
 function App() {
   return (
     <ThemeProvider theme={baseTheme}>
-      <LoginPage />
+      <RegistrationPage />
     </ThemeProvider>
 
   );
