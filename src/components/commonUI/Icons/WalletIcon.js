@@ -1,5 +1,5 @@
-function WalletIcon({ color }) {
-  const fill = color || "#838383";
+function WalletIcon({ checked }) {
+  const fill = checked ? "#fff" : "#838383";
 
   return (
     <svg

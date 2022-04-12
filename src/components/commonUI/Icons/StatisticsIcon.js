@@ -1,5 +1,5 @@
-function StatisticsIcon({ color }) {
-  const fill = color || "#838383";
+function StatisticsIcon({ checked }) {
+  const fill = checked ? "#fff" : "#838383";
 
   return (
     <svg

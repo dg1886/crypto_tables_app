@@ -17,6 +17,7 @@ export const baseTheme = {
     darkGrey: "#0f0f0f",
     white: "#ffffff",
     grey: "#1c1c1c",
+    lightGrey: "#838383",
     pink: "#e36d85",
     blue: "#29a5e9",
     red: "#ae5467",

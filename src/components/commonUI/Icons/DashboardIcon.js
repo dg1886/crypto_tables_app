@@ -1,5 +1,5 @@
-function DashboardIcon({ color }) {
-  const stroke = color || "#838383";
+function DashboardIcon({ checked }) {
+  const stroke = checked ? "#fff" : "#838383";
 
   return (
     <svg
