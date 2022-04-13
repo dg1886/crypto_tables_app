@@ -1,8 +1,14 @@
+import { ThemeProvider } from "styled-components";
+
+import RegistrationPage from "./page/RegistrationPage";
+import { baseTheme } from "./styles/theme";
+
 function App() {
   return (
-    <div>
-      <span>Crypto app</span>
-    </div>
+    <ThemeProvider theme={baseTheme}>
+      <RegistrationPage />
+    </ThemeProvider>
+
   );
 }
 

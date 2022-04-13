@@ -12,9 +12,13 @@ export const baseTheme = {
     height: "30px",
     width: "30px",
   },
+  inputSize: {
+    height: "45px",
+    width: "400px",
+  },
   colors: {
-    primary: "#080808",
-    secondary: "#0f0f0f",
+    dark: "#080808",
+    darkGrey: "#0f0f0f",
     white: "#ffffff",
     grey: "#1c1c1c",
     pink: "#e36d85",
