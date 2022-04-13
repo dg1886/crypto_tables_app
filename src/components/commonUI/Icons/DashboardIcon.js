@@ -1,5 +1,8 @@
-function DashboardIcon({ color }) {
-  const stroke = color || "#838383";
+import { useTheme } from "styled-components";
+
+function DashboardIcon({ checked }) {
+  const { colors } = useTheme();
+  const stroke = checked ? `${colors.white}` : `${colors.lightGrey}`;
 
   return (
     <svg
