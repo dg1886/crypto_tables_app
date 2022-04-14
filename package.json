@@ -9,6 +9,7 @@
     "axios": "^0.26.1",
     "d3-axis": "^3.0.0",
     "d3.js": "^0.0.2-security",
+    "dayjs": "^1.11.0",
     "eslint": "^8.12.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-loader": "^4.0.2",
@@ -32,7 +33,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx"
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:style": "./node_modules/.bin/stylelint ./src/**/*.{css,scss,js}"
   },
   "browserslist": {
     "production": [
@@ -45,5 +47,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }
