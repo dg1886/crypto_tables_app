@@ -1,4 +1,7 @@
 export const baseTheme = {
+  fontFamily: {
+    primary: "Gilroy",
+  },
   fontSize: {
     extraLarge: "36px",
     large: "24px",
@@ -13,10 +16,11 @@ export const baseTheme = {
     width: "30px",
   },
   colors: {
-    primary: "#080808",
-    secondary: "#0f0f0f",
+    dark: "#080808",
+    darkGrey: "#0f0f0f",
     white: "#ffffff",
     grey: "#1c1c1c",
+    lightGrey: "#838383",
     pink: "#e36d85",
     blue: "#29a5e9",
     red: "#ae5467",

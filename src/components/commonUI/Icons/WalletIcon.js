@@ -1,5 +1,8 @@
-function WalletIcon({ color }) {
-  const fill = color || "#838383";
+import { useTheme } from "styled-components";
+
+function WalletIcon({ checked }) {
+  const { colors } = useTheme();
+  const fill = checked ? `${colors.white}` : `${colors.lightGrey}`;
 
   return (
     <svg
