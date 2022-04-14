@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 import logout from "../../../assets/images/logout.svg";
 
-const LogoutIcon = styled.img.attrs({
+export const LogoutIcon = styled.img.attrs({
   src: logout,
 })`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   cursor: pointer;
+  padding: ${({ padding }) => padding};
 `;
-
-export default LogoutIcon;

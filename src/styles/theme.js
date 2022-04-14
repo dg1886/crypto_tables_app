@@ -1,26 +1,30 @@
 export const baseTheme = {
+  fontFamily: {
+    primary: "Gilroy",
+  },
   fontSize: {
-    extraLarge: "36px",
-    large: "24px",
-    normal: "16px",
-    small: "14px",
+    extraLarge: "2.25rem",
+    large: "1.5rem",
+    normal: "1rem",
+    small: "0.875rem",
   },
   letterSpacing: {
     default: "1px",
   },
   iconSize: {
-    height: "30px",
-    width: "30px",
+    height: "1.875rem",
+    width: "1.875rem",
   },
   inputSize: {
-    height: "45px",
-    width: "400px",
+    height: "2.813rem",
+    width: "25rem",
   },
   colors: {
     dark: "#080808",
     darkGrey: "#0f0f0f",
     white: "#ffffff",
     grey: "#1c1c1c",
+    lightGrey: "#838383",
     pink: "#e36d85",
     blue: "#29a5e9",
     red: "#ae5467",

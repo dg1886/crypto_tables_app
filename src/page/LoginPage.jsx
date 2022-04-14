@@ -3,7 +3,7 @@ import { useState } from "react";
 import MocUsers from "../common/users.json";
 import Button from "../components/CommonUI/Button";
 import FlexBox from "../components/CommonUI/FlexBox";
-import Logo from "../components/commonUI/Icons/Logo";
+import Logo from "../components/CommonUI/Icons/Logo";
 import Input from "../components/CommonUI/Input";
 import Text from "../components/CommonUI/Text";
 import Tittle from "../components/CommonUI/Tittle";
@@ -89,18 +89,18 @@ const LoginPage = () => {
       <FlexBox
         width="50%"
         height="60%"
-        padding="100px 0"
+        padding="6.25rem 0"
         flexDirection="column"
         justifyContent="space-evenly"
         backColor="dark"
-        radius="20px"
+        radius="1.25rem"
       >
         <FlexBox>
           <Logo />
-          <Tittle padding="0 10px">Login</Tittle>
+          <Tittle padding="0 0.625rem">Login</Tittle>
         </FlexBox>
 
-        <FlexBox flexDirection="column" height="250px" justifyContent="space-evenly">
+        <FlexBox flexDirection="column" height="15.625rem" justifyContent="space-evenly">
 
           <FlexBox flexDirection="column">
             <Input
@@ -110,7 +110,7 @@ const LoginPage = () => {
               value={inputs.email}
               placeholder="Email"
             />
-            <Text height="18px">{errors.email && errors.email}</Text>
+            <Text height="1.125rem">{errors.email && errors.email}</Text>
           </FlexBox>
 
           <FlexBox flexDirection="column">
@@ -121,7 +121,7 @@ const LoginPage = () => {
               value={inputs.password}
               placeholder="Password"
             />
-            <Text height="18px">{errors.password && errors.password}</Text>
+            <Text height="1.125rem">{errors.password && errors.password}</Text>
           </FlexBox>
 
         </FlexBox>

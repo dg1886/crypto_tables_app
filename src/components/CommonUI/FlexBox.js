@@ -15,6 +15,7 @@ const FlexBox = styled.div`
   border:${({ border }) => border};
   border-radius:${({ radius }) => radius};
   overflow:${({ overFlow }) => overFlow || "hidden"};
+  z-index: ${({ zIndex }) => zIndex};
 `;
 
 export default FlexBox;
