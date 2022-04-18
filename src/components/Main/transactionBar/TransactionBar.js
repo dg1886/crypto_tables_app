@@ -5,7 +5,7 @@ display: flex;
 justify-content:center;
 align-items: center;
 background-color: ${({ theme }) => theme.colors.grey};
-width: 28.75rem;
+width: 30%;
 height: 28.125rem;
 padding: 0;
 box-sizing: border-box;
