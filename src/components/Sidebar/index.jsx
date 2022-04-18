@@ -16,7 +16,7 @@ const Sidebar = () => {
   return (
     <FlexBox width="18.75rem" justifyContent="space-between" padding="0 0 1rem 1rem" flexDirection="column" height="100%">
       <div>
-        <FlexBox width="100%" height="8rem" justifyContent="space-between">
+        <FlexBox width="100%" height="6rem" justifyContent="space-between" margin="0 0 1rem 0">
           <Logo />
           <Tittle padding="0 0 0 1rem">Crypto App</Tittle>
         </FlexBox>
