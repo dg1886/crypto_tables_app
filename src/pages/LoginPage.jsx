@@ -1,25 +1,29 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import MocUsers from "../common/users.json";
 import Button from "../components/CommonUI/Button";
 import FlexBox from "../components/CommonUI/FlexBox";
-import Logo from "../components/commonUI/Icons/Logo";
+import Logo from "../components/CommonUI/Icons/Logo";
 import Input from "../components/CommonUI/Input";
+import StyledLink from "../components/CommonUI/StyledLink";
 import Text from "../components/CommonUI/Text";
 import Tittle from "../components/CommonUI/Tittle";
-import BackToLogin from "../components/Registration";
+import Modal from "../components/Modal";
 
-const RegistrationPage = () => {
+const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const [showModal, setShowModal] = useState(false);
+
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const [errors, setErrors] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   const onChange = (e) => {
@@ -52,24 +56,6 @@ const RegistrationPage = () => {
             stateObj[name] = "Only latin letters and numbers";
           } else if (value.length < 3 || value.length > 10) {
             stateObj[name] = "No less than 3 and more than 10 characters";
-          } else if (inputs.confirmPassword && value !== inputs.confirmPassword) {
-            stateObj.confirmPassword = "Password and Confirm Password does not match.";
-          } else {
-            stateObj.confirmPassword = inputs.confirmPassword
-              ? ""
-              : errors.confirmPassword;
-          }
-          break;
-
-        case "confirmPassword":
-          if (!value) {
-            stateObj[name] = "Please enter Confirm Password.";
-          } else if (passwordRegexp.test(String(value).toLowerCase())) {
-            stateObj[name] = "Only latin letters and numbers";
-          } else if (value.length < 3 || value.length > 10) {
-            stateObj[name] = "No less than 3 and more than 10 characters";
-          } else if (inputs.password && value !== inputs.password) {
-            stateObj[name] = "Password and Confirm Password does not match.";
           }
           break;
 
@@ -87,7 +73,7 @@ const RegistrationPage = () => {
       (item) => item.email === inputs.email,
     );
     if (checkUser?.password === inputs.password) {
-      // navigate("") for future routing;
+      navigate("/dashboard");
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -96,10 +82,13 @@ const RegistrationPage = () => {
         }),
       );
     }
+
+    if (checkUser?.password !== inputs.password) {
+      setShowModal(true);
+    }
   };
 
   return (
-
     <FlexBox
       height="100vh"
       width="100%"
@@ -118,7 +107,7 @@ const RegistrationPage = () => {
       >
         <FlexBox>
           <Logo />
-          <Tittle padding="0 0.625rem">Registration</Tittle>
+          <Tittle padding="0 0.625rem">Login</Tittle>
         </FlexBox>
 
         <FlexBox flexDirection="column" height="15.625rem" justifyContent="space-evenly">
@@ -127,10 +116,9 @@ const RegistrationPage = () => {
             <Input
               name="email"
               type="email"
-              placeholder="Email"
               onChange={onChange}
               value={inputs.email}
-
+              placeholder="Email"
             />
             <Text height="1.125rem">{errors.email && errors.email}</Text>
           </FlexBox>
@@ -139,38 +127,26 @@ const RegistrationPage = () => {
             <Input
               name="password"
               type="password"
-              placeholder="Password"
               onChange={onChange}
               value={inputs.password}
-
+              placeholder="Password"
             />
             <Text height="1.125rem">{errors.password && errors.password}</Text>
           </FlexBox>
 
-          <FlexBox flexDirection="column">
-            <Input
-              id="confirm_password"
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirm password"
-              onChange={onChange}
-              value={inputs.confirmPassword}
-
-            />
-            <Text height="1.125rem">{errors.confirmPassword && errors.confirmPassword}</Text>
-          </FlexBox>
-
         </FlexBox>
-
-        <Button onClick={onSubmit}>
-          <Text>Submit</Text>
-        </Button>
-
-        <BackToLogin>to login</BackToLogin>
+        <Button onClick={onSubmit}>Submit</Button>
+        <StyledLink href="/registration" content="or register" padding="1.25rem 0 0.313rem 0" />
       </FlexBox>
 
+      <Modal
+        active={showModal}
+        hideModal={() => setShowModal(false)}
+        title="Registration failed"
+      >Please try again
+      </Modal>;
     </FlexBox>
   );
 };
 
-export default RegistrationPage;
+export default LoginPage;

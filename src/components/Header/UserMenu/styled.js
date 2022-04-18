@@ -33,6 +33,7 @@ export const UserNameTag = styled.div`
   font-style: normal;
   font-size: ${({ theme }) => theme.fontSize.large};
   user-select: none;
+  text-transform: uppercase;
 `;
 
 export const Menu = styled.div`
@@ -58,19 +59,6 @@ export const Menu = styled.div`
     background: darkgray;;
     transform: rotate(45deg);
   }
-`;
-
-export const H4 = styled.h4`
-  width: 100%;
-  text-align: center;
-  font-size: 18px;
-  padding: 1.25rem 0;
-  font-family: ${({ theme }) => theme.fontFamily.primary};
-  font-weight: 500;
-  font-style: normal;
-  color: ${({ theme }) => theme.colors.grey};
-  letter-spacing: ${({ theme }) => theme.letterSpacing.default};
-  line-height: 1.2em;
 `;
 
 export const Ul = styled.ul`
@@ -99,6 +87,7 @@ export const Li = styled.li`
 export const UserLogout = styled(Li)`
   cursor: pointer;
   transition: color 0.8s, background 0.8s;
+  user-select: none;
 
   :hover {
     color: ${({ theme }) => theme.colors.white};
@@ -108,13 +97,4 @@ export const UserLogout = styled(Li)`
   :active {
     background: #555;
   }
-`;
-
-export const OutsideBackground = styled.div`
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  left: 0;
 `;

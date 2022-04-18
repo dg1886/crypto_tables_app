@@ -1,57 +1,72 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { TAB_NAMES } from "../../constants/Names";
+import { useLogout } from "../../hooks/useLogout";
 import FlexBox from "../CommonUI/FlexBox";
 import DashboardIcon from "../CommonUI/Icons/DashboardIcon";
 import Logo from "../CommonUI/Icons/Logo";
 import StatisticsIcon from "../CommonUI/Icons/StatisticsIcon";
 import WalletIcon from "../CommonUI/Icons/WalletIcon";
-import Tittle from "../CommonUI/Tittle";
+import { Title } from "../Text/Title";
 import LogoutButton from "./LogoutButton";
 import SidebarTab from "./SidebarTab";
 import SwitchButton from "./SwitchButton";
 
 const Sidebar = () => {
-  const [checkedTab, setCheckedTab] = useState("dashboard");
+  const [checkedTab, setCheckedTab] = useState(TAB_NAMES.DASHBOARD);
+  const navigate = useNavigate();
+  const logout = useLogout("/login");
+
+  useEffect(() => {
+    navigate(checkedTab);
+  }, [checkedTab]);
 
   return (
-    <FlexBox width="18.75rem" justifyContent="space-between" padding="0 0 1rem 1rem" flexDirection="column" height="100%">
+    <FlexBox
+      width="18.75rem"
+      justifyContent="space-between"
+      padding="0 0 1rem 1rem"
+      flexDirection="column"
+      height="100%"
+    >
       <div>
         <FlexBox width="100%" height="6rem" justifyContent="space-between" margin="0 0 1rem 0">
           <Logo />
-          <Tittle padding="0 0 0 1rem">Crypto App</Tittle>
+          <Title padding="0 0 0 1rem" userSelect="none">Crypto App</Title>
         </FlexBox>
 
         <SidebarTab
-          text="Dashboard"
+          text={TAB_NAMES.DASHBOARD}
           margin="0 0 0 1rem"
-          onClick={() => setCheckedTab("dashboard")}
-          checked={checkedTab === "dashboard"}
+          onClick={() => setCheckedTab(TAB_NAMES.DASHBOARD)}
+          checked={checkedTab === TAB_NAMES.DASHBOARD}
         >
-          <DashboardIcon checked={checkedTab === "dashboard"} />
+          <DashboardIcon checked={checkedTab === TAB_NAMES.DASHBOARD} />
         </SidebarTab>
 
         <SidebarTab
-          text="Market"
+          text={TAB_NAMES.WALLET}
           margin="0 0 0 1rem"
-          onClick={() => setCheckedTab("market")}
-          checked={checkedTab === "market"}
+          onClick={() => setCheckedTab(TAB_NAMES.WALLET)}
+          checked={checkedTab === TAB_NAMES.WALLET}
         >
-          <WalletIcon checked={checkedTab === "market"} />
+          <WalletIcon checked={checkedTab === TAB_NAMES.WALLET} />
         </SidebarTab>
 
         <SidebarTab
-          text="Statistics"
+          text={TAB_NAMES.STATISTICS}
           margin="0 0 0 1rem"
-          onClick={() => setCheckedTab("statistics")}
-          checked={checkedTab === "statistics"}
+          onClick={() => setCheckedTab(TAB_NAMES.STATISTICS)}
+          checked={checkedTab === TAB_NAMES.STATISTICS}
         >
-          <StatisticsIcon checked={checkedTab === "statistics"} />
+          <StatisticsIcon checked={checkedTab === TAB_NAMES.STATISTICS} />
         </SidebarTab>
       </div>
 
       <FlexBox width="100%" flexDirection="column" alignItems="flex-start" padding="1rem">
         <SwitchButton margin="5rem 0 0 0.4rem" />
-        <LogoutButton />
+        <LogoutButton logout={logout} />
       </FlexBox>
     </FlexBox>
   );
