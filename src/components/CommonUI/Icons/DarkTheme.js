@@ -1,12 +1,12 @@
-import styled from "styled-components";
+function Icon({ size = "22px", fill }) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 512 512">
+      <path
+        d="M494.9 331.3c-6.1-6.1-15.3-7.8-23.2-4.2-37.1 17.1-78.3 23.2-119 17.6-117.3-16.3-199.5-125.2-183.3-242.8 3-21.4 9-42.2 18.1-61.6 3.6-7.8 2-17.1-4.1-23.2-6.1-6.1-15.3-7.7-23.2-4.2C116.5 32.3 29.9 94 13.7 210.8c-25.8 186.5 139 284.9 218.4 289.2 55.7 3.1 189.9 8.1 266.9-145.5 3.8-7.7 2-17.1-4.1-23.2zM237.7 459.2C120.4 442.9 38.2 334 54.4 216.4c7.6-55 35.5-103.8 77.4-137.7-1.2 5.8-2.2 11.6-3 17.5-27.2 193.6 143 282.8 218.3 289.2 29 2.5 57.9 3.1 86-2.7-46.5 57.2-119.7 87-195.4 76.5z"
+        fill={fill}
+      />
+    </svg>
+  );
+}
 
-import darkTheme from "../../../assets/images/darkTheme.png";
-
-const DarkThemeIco = styled.img.attrs({
-  src: darkTheme,
-})`
-  width: 25px;
-  height: 25px;
-`;
-
-export default DarkThemeIco;
+export default Icon;

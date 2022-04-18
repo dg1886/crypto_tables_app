@@ -1,35 +1,12 @@
-import { useTheme } from "styled-components";
-
-function StatisticsIcon({ checked }) {
-  const { colors } = useTheme();
-  const fill = checked ? `${colors.white}` : `${colors.lightGrey}`;
-
+function StatisticsIcon({ fill }) {
   return (
     <svg
-      width="35px"
-      height="35px"
-      version="1.1"
-      viewBox="0 0 24 24"
-      xmlSpace="preserve"
       xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      viewBox="0 0 1024 1024"
     >
-      <g id="info" />
-      <g id="icons">
-        <g id="statistics">
-          <path
-            fill={fill}
-            d="M5,12H3c-1.1,0-2,0.9-2,2v6c0,1.1,0.9,2,2,2h2c1.1,0,2-0.9,2-2v-6C7,12.9,6.1,12,5,12z"
-          />
-          <path
-            fill={fill}
-            d="M13,2h-2C9.9,2,9,2.9,9,4v16c0,1.1,0.9,2,2,2h2c1.1,0,2-0.9,2-2V4C15,2.9,14.1,2,13,2z"
-          />
-          <path
-            fill={fill}
-            d="M21,8h-2c-1.1,0-2,0.9-2,2v10c0,1.1,0.9,2,2,2h2c1.1,0,2-0.9,2-2V10C23,8.9,22.1,8,21,8z"
-          />
-        </g>
-      </g>
+      <path fill={fill} d="M272.064 319.984H48c-17.68 0-32 14.32-32 32V992c0 17.68 14.32 32 32 32h224.064c17.68 0 32-14.32 32-32V351.984c0-17.68-14.32-32-32-32zm-32 640.016H80V383.984h160.064V960zm383.68-449.744h-224.08c-17.68 0-32 14.32-32 32V992c0 17.68 14.32 32 32 32h224.08c17.68 0 32-14.32 32-32V542.256c0-17.696-14.304-32-32-32zm-32 449.744h-160.08V574.256h160.08V960zM976 0H752.272c-17.68 0-32 14.32-32 32v960c0 17.68 14.32 32 32 32H976c17.68 0 32-14.32 32-32V32c0-17.68-14.32-32-32-32zm-32 960H784.272V64H944v896z" />
     </svg>
   );
 }

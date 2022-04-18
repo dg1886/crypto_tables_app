@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Button = styled.button`
   position: relative;
-  color:${({ theme }) => theme.colors.white};
+  color:${({ theme }) => theme.colors.textColor};
   background-color: transparent;
   width: ${({ width }) => width || "15.625rem"};
   height: ${({ height }) => height || "3.125rem"};
@@ -16,7 +16,7 @@ const Button = styled.button`
   ::before {
     display: block;
     position: absolute;
-    background-color: ${({ theme }) => theme.colors.pink};
+    background-color: ${({ theme }) => theme.colors.buttonColor};
     width: 100%;
     height: 100%;
     content: "";
@@ -27,7 +27,7 @@ const Button = styled.button`
 
   :hover {   
     ::before {      
-        background-color: ${({ theme }) => theme.colors.red};
+        background-color: ${({ theme }) => theme.colors.hoverButton};
       }
   }
 

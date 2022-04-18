@@ -9,21 +9,21 @@ export const Profile = styled.div`
   position: relative;
   width: 3.75rem;
   height: 3.75rem;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.textColor};
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.background};
   transition: background 0.5s, color 0.5s, box-shadow 0.5s;
   z-index: 100;
 
   :hover {
     background: rgba(0, 0, 0, 0);
-    color: ${({ theme }) => theme.colors.pink};
-    box-shadow: inset 0 0 0 3px ${({ theme }) => theme.colors.pink};
+    color: ${({ theme }) => theme.colors.buttonColor};
+    box-shadow: inset 0 0 0 3px ${({ theme }) => theme.colors.buttonColor};
   }
 `;
 
@@ -40,7 +40,7 @@ export const Menu = styled.div`
   top: 4.688rem;
   right: -0.5rem;
   padding: 0.6rem 1.25rem;
-  background: darkgray;
+  background: backgroundgray;
   width: 12.5rem;
   border-radius: 1rem;
   transition: visibility 0.9s, opacity 0.9s;
@@ -55,7 +55,7 @@ export const Menu = styled.div`
     right: 1.75rem;
     width: 1.25rem;
     height: 1.25rem;
-    background: darkgray;;
+    background: backgroundgray;;
     transform: rotate(45deg);
   }
 `;
@@ -68,7 +68,7 @@ export const H4 = styled.h4`
   font-family: ${({ theme }) => theme.fontFamily.primary};
   font-weight: 500;
   font-style: normal;
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colors.backgroundItems};
   letter-spacing: ${({ theme }) => theme.letterSpacing.default};
   line-height: 1.2em;
 `;
@@ -92,7 +92,7 @@ export const Li = styled.li`
   font-family: ${({ theme }) => theme.fontFamily.primary};
   font-weight: 500;
   font-style: normal;
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.background};
   letter-spacing: ${({ theme }) => theme.letterSpacing.default};
 `;
 
@@ -101,8 +101,8 @@ export const UserLogout = styled(Li)`
   transition: color 0.8s, background 0.8s;
 
   :hover {
-    color: ${({ theme }) => theme.colors.white};
-    background: ${({ theme }) => theme.colors.pink};
+    color: ${({ theme }) => theme.colors.textColor};
+    background: ${({ theme }) => theme.colors.buttonColor};
   }
 
   :active {

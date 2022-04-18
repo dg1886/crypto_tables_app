@@ -1,76 +1,34 @@
 import styled from "styled-components";
 
-import lightTheme from "../../../assets/images/lightTheme.png";
-import { TextRegular } from "../../Text/TextRegular";
+import { DARK } from "../../../constants/themeConstants";
 
-export const SwitchButtonWrapper = styled.div`
-  background: ${({ theme }) => theme.colors.grey};
+export const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  background: ${({ theme }) => theme.colors.backgroundItems};
   border-radius: 0.625rem;
-  overflow: hidden;
-  width: 4rem;
+  width: 8rem;
+  height: 2.5rem;
   text-align: center;
-   position: relative;
-  padding-right: 3.75rem;
   box-shadow: rgba(238, 234, 234, 0.02) 0px 1px 3px 0px, rgba(233, 239, 245, 0.15) 0px 0px 0px 1px;
-  margin: ${({ margin }) => margin};
-
-  :before {
-    content: url(${lightTheme});
-    position: absolute;
-    top: 2px;
-    bottom: 0;
-    right: 0;
-    width: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    pointer-events: none;
-
-    :checked {
-      color: ${({ color, theme }) => color || theme.colors.pink};
-    }
-  }
 `;
 
-export const Checkbox = styled.input`
+export const Option = styled.div`
+  width: 4rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center; 
+  z-index: 10;
   cursor: pointer;
+`;
+
+export const Switcher = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 2;
-
-  :checked + Label:before {
-    transform: translateX(3.8x);
-    transition: transform 300ms linear;
-    background-color: ${({ theme }) => theme.colors.white};
-  }
-`;
-
-export const Label = styled.label`
-  position: relative;
-  padding: 0.375rem 0;
-  display: block;
-  user-select: none;
-  pointer-events: none;
-
-  :before {
-    content: "";
-    background: ${({ theme }) => theme.colors.pink};
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    border-radius: 0.625rem;
-    transform: translateX(0);
-    transition: transform 300ms;
-`;
-
-export const Span = styled(TextRegular)`
-  position: relative;
+  width: 4rem;
+  height: 2.5rem;
+  background-color: ${({ theme }) => theme.colors.buttonColor};
+  border-radius: 0.625rem;
+  z-index: 5;
+  transform: translateX(${({ chosenTheme }) => (chosenTheme === DARK ? "0" : "4rem")});
+  transition: transform 0.3s;
 `;

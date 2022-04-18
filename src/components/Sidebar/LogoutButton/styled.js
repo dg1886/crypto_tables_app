@@ -14,11 +14,11 @@ export const LogoutBtnWrapper = styled.div`
   transition: color 0.8s, background 0.8s;
 
   :hover {
-    color: ${({ theme }) => theme.colors.white};
-    background: ${({ theme }) => theme.colors.pink};
+    color: ${({ theme }) => theme.colors.textColor};
+    background: ${({ theme }) => theme.colors.buttonColor};
   }
 
   :active {
-    background: ${({ theme }) => theme.colors.dark};
+    background: ${({ theme }) => theme.colors.background};
   }
 `;

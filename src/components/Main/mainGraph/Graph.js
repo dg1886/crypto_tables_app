@@ -4,7 +4,7 @@ const Graph = styled.div`
 display: flex;
 justify-content:center;
 align-items: center;
-background-color: ${({ theme }) => theme.colors.grey};
+background-color: ${({ theme }) => theme.colors.backgroundItems};
 width: 70%;
 height: 28.125rem;
 margin-right: 1.5rem;
