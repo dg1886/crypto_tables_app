@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Action = styled.div`
   position: fixed;
-  right: 60px;
+  right: 3.75rem;
 `;
 
 export const Profile = styled.div`
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 3.75rem;
+  height: 3.75rem;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 50%;
   overflow: hidden;
@@ -37,12 +37,12 @@ export const UserNameTag = styled.div`
 
 export const Menu = styled.div`
   position: absolute;
-  top: 75px;
-  right: -8px;
-  padding: 10px 20px;
+  top: 4.688rem;
+  right: -0.5rem;
+  padding: 0.6rem 1.25rem;
   background: darkgray;
-  width: 200px;
-  border-radius: 15px;
+  width: 12.5rem;
+  border-radius: 1rem;
   transition: visibility 0.9s, opacity 0.9s;
   visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
   opacity: ${(props) => (props.isOpen ? 1 : 0)};
@@ -51,10 +51,10 @@ export const Menu = styled.div`
   :before {
     content: "";
     position: absolute;
-    top: -5px;
-    right: 28px;
-    width: 20px;
-    height: 20px;
+    top: -0.3rem;
+    right: 1.75rem;
+    width: 1.25rem;
+    height: 1.25rem;
     background: darkgray;;
     transform: rotate(45deg);
   }
@@ -64,7 +64,7 @@ export const H4 = styled.h4`
   width: 100%;
   text-align: center;
   font-size: 18px;
-  padding: 20px 0;
+  padding: 1.25rem 0;
   font-family: ${({ theme }) => theme.fontFamily.primary};
   font-weight: 500;
   font-style: normal;
@@ -83,7 +83,7 @@ export const Ul = styled.ul`
 
 export const Li = styled.li`
   list-style: none;
-  padding: 10px 0;
+  padding: 0.6rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;

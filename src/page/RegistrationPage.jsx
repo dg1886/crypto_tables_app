@@ -110,18 +110,18 @@ const RegistrationPage = () => {
       <FlexBox
         width="50%"
         height="60%"
-        padding="100px 0"
+        padding="6.25rem 0"
         flexDirection="column"
         justifyContent="space-evenly"
         backColor="dark"
-        radius="20px"
+        radius="1.25rem"
       >
         <FlexBox>
           <Logo />
-          <Tittle padding="0 10px">Registration</Tittle>
+          <Tittle padding="0 0.625rem">Registration</Tittle>
         </FlexBox>
 
-        <FlexBox flexDirection="column" height="250px" justifyContent="space-evenly">
+        <FlexBox flexDirection="column" height="15.625rem" justifyContent="space-evenly">
 
           <FlexBox flexDirection="column">
             <Input
@@ -132,7 +132,7 @@ const RegistrationPage = () => {
               value={inputs.email}
 
             />
-            <Text height="18px">{errors.email && errors.email}</Text>
+            <Text height="1.125rem">{errors.email && errors.email}</Text>
           </FlexBox>
 
           <FlexBox flexDirection="column">
@@ -144,7 +144,7 @@ const RegistrationPage = () => {
               value={inputs.password}
 
             />
-            <Text height="18px">{errors.password && errors.password}</Text>
+            <Text height="1.125rem">{errors.password && errors.password}</Text>
           </FlexBox>
 
           <FlexBox flexDirection="column">
@@ -157,7 +157,7 @@ const RegistrationPage = () => {
               value={inputs.confirmPassword}
 
             />
-            <Text height="18px">{errors.confirmPassword && errors.confirmPassword}</Text>
+            <Text height="1.125rem">{errors.confirmPassword && errors.confirmPassword}</Text>
           </FlexBox>
 
         </FlexBox>

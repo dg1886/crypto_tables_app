@@ -6,8 +6,8 @@ function WalletIcon({ checked }) {
 
   return (
     <svg
-      width="30"
-      height="30"
+      width="35"
+      height="35"
       version="1.1"
       viewBox="0 0 25 25"
       xmlSpace="preserve"

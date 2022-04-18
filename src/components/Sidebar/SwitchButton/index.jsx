@@ -1,5 +1,5 @@
-import lightTheme from "../../assets/images/lightTheme.png";
-import DarkThemeIco from "../commonUI/Icons/DarkTheme";
+import lightTheme from "../../../assets/images/lightTheme.png";
+import DarkThemeIco from "../../CommonUI/Icons/DarkTheme";
 import {
   Checkbox, Label, Span, SwitchButtonWrapper,
 } from "./styled";

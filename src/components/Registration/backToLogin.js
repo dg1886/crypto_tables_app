@@ -7,8 +7,8 @@ const BackLog = styled.div`
   font-weight: 200;
   border:none;
   border-bottom: 2px solid #ffffffb5;
-  padding: 20px 0 5px 0 ;
-  cursor:pointer;
+  padding: 1.25rem 0 0.313rem 0 ;
+  cursor: pointer;
 `;
 
 export default BackLog;

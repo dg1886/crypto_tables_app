@@ -1,18 +1,16 @@
 import styled from "styled-components";
 
-import lightTheme from "../../assets/images/lightTheme.png";
-import { TextRegular } from "../Text/TextRegular";
+import lightTheme from "../../../assets/images/lightTheme.png";
+import { TextRegular } from "../../Text/TextRegular";
 
 export const SwitchButtonWrapper = styled.div`
   background: ${({ theme }) => theme.colors.grey};
-  border-radius: 10px;
+  border-radius: 0.625rem;
   overflow: hidden;
-  width: 65px;
+  width: 4rem;
   text-align: center;
-  font-size: 18px;
-  letter-spacing: 1px;
-  position: relative;
-  padding-right: 60px;
+   position: relative;
+  padding-right: 3.75rem;
   box-shadow: rgba(238, 234, 234, 0.02) 0px 1px 3px 0px, rgba(233, 239, 245, 0.15) 0px 0px 0px 1px;
   margin: ${({ margin }) => margin};
 
@@ -22,7 +20,7 @@ export const SwitchButtonWrapper = styled.div`
     top: 2px;
     bottom: 0;
     right: 0;
-    width: 65px;
+    width: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +45,7 @@ export const Checkbox = styled.input`
   z-index: 2;
 
   :checked + Label:before {
-    transform: translateX(61px);
+    transform: translateX(3.8x);
     transition: transform 300ms linear;
     background-color: ${({ theme }) => theme.colors.white};
   }
@@ -55,7 +53,7 @@ export const Checkbox = styled.input`
 
 export const Label = styled.label`
   position: relative;
-  padding: 6px 0;
+  padding: 0.375rem 0;
   display: block;
   user-select: none;
   pointer-events: none;
@@ -68,7 +66,7 @@ export const Label = styled.label`
     position: absolute;
     left: 0;
     top: 0;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     transform: translateX(0);
     transition: transform 300ms;
 `;

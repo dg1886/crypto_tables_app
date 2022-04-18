@@ -5,10 +5,10 @@ const Input = styled.input`
   height: ${({ height, theme }) => height || theme.inputSize.height};
   background-color:${({ theme }) => theme.colors.grey};
   color:${({ theme }) => theme.colors.white};
-  padding: 0 10px;
-  margin: 10px 0;
+  padding: 0 0.625rem;
+  margin: 0.625rem 0;
   border: none;
-  border-radius:10px;
+  border-radius: 0.625rem;
 `;
 
 export default Input;

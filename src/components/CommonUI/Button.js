@@ -10,7 +10,7 @@ const Button = styled.button`
   padding: ${({ padding }) => padding || 0};
   border: none;
   font-size:  ${({ theme }) => theme.fontSize.normal};
-  overlow: hidden;
+  overlow: hidden; 
   z-index: 1;  
    
   ::before {
