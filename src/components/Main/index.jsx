@@ -7,7 +7,6 @@ import TransactionBar from "./transactionBar";
 const MainContent = () => {
   return (
     <FlexBox width="100%" flexDirection="column">
-
       <FlexBox width="100%" justifyContent="space-between">
         <GraphsSmall />
         <GraphsSmall />
@@ -15,7 +14,7 @@ const MainContent = () => {
         <GraphsSmall />
       </FlexBox>
 
-      <FlexBox justifyContent="space-between" width="100%" padding="1.5rem 0">
+      <FlexBox justifyContent="space-between" width="100%" padding="1rem 0">
         <MainGraph />
         <TransactionBar />
       </FlexBox>

@@ -4,7 +4,7 @@ const GraphsSmall = styled.div`
 display: flex;
 justify-content:center;
 align-items: center;
-background-color: ${({ theme }) => theme.colors.blue};
+background-color: ${({ theme }) => theme.colors.grpahCandleBlue};
 width: 24%;
 height: 9.375rem;
 margin: 0;

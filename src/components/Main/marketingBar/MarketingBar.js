@@ -4,7 +4,7 @@ const Marketing = styled.div`
 display: flex;
 justify-content:center; 
 align-items: center;
-background-color: ${({ theme }) => theme.colors.grey};
+background-color: ${({ theme }) => theme.colors.backgroundItems};
 width: 100%;
 height: 14.375rem;
 padding: 0;

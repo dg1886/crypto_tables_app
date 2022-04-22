@@ -1,13 +1,11 @@
-import { ThemeProvider } from "styled-components";
-
 import MainPage from "./page/MainPage";
-import { baseTheme } from "./styles/theme";
+import ThemeContextProvider from "./services/themeContext";
 
 function App() {
   return (
-    <ThemeProvider theme={baseTheme}>
+    <ThemeContextProvider>
       <MainPage />
-    </ThemeProvider>
+    </ThemeContextProvider>
   );
 }
 

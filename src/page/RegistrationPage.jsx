@@ -104,7 +104,7 @@ const RegistrationPage = () => {
       height="100vh"
       width="100%"
       flexDirection="column"
-      backColor="darkGrey"
+      backColor="secondary"
 
     >
       <FlexBox
@@ -113,7 +113,7 @@ const RegistrationPage = () => {
         padding="6.25rem 0"
         flexDirection="column"
         justifyContent="space-evenly"
-        backColor="dark"
+        backColor="background"
         radius="1.25rem"
       >
         <FlexBox>

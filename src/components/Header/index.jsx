@@ -4,7 +4,12 @@ import UserMenu from "./UserMenu";
 
 const Header = () => {
   return (
-    <FlexBox width="100%" height="6rem" justifyContent="space-between">
+    <FlexBox
+      width="100%"
+      height="8rem"
+      justifyContent="space-between"
+      padding="0 2rem"
+    >
 
       <Tittle>Dashboard</Tittle>
 
