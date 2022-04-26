@@ -1,7 +1,8 @@
 import { useState } from "react";
 
+import Typography from "../../Typography";
 import {
-  Action, H4, Li, Menu, OutsideBackground, Profile, Ul, UserLogout, UserNameTag,
+  Action, H4, Li, Menu, OutsideBackground, Profile, Ul, UserLogout,
 } from "./styled";
 
 const UserMenu = () => {
@@ -14,7 +15,7 @@ const UserMenu = () => {
   return (
     <Action>
       <Profile onClick={toggleMenu}>
-        <UserNameTag>D</UserNameTag> {/* заглушка, предполагается вывод первой буквы логина пользователя */}
+        <Typography variant="user_name_tag">D</Typography>
       </Profile>
 
       <Menu isOpen={isOpen}>

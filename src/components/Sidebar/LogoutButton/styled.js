@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const LogoutBtnWrapper = styled.div`
-  width: 90%;
+  width: 73%;
   height: 3.5rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   background-color: transparent;
   border-radius: 0.6rem;
@@ -12,6 +12,8 @@ export const LogoutBtnWrapper = styled.div`
   margin-top: 1.875rem;
   padding: 0 0.6rem;
   transition: color 0.8s, background 0.8s;
+  align-self: flex-start;
+  margin-left: 0.7rem;
 
   :hover {
     color: ${({ theme }) => theme.colors.textColor};

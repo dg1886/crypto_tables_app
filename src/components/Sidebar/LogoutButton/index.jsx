@@ -1,7 +1,7 @@
 import { useTheme } from "styled-components";
 
 import LogoutIcon from "../../CommonUI/Icons/LogoutIcon";
-import { TextRegular } from "../../Text/TextRegular";
+import Typography from "../../Typography";
 import { LogoutBtnWrapper } from "./styled";
 
 const LogoutButton = () => {
@@ -9,9 +9,9 @@ const LogoutButton = () => {
   return (
     <LogoutBtnWrapper>
       <LogoutIcon fill={colors.textColor} />
-      <TextRegular userSelect="none" margin="0 0 0 1rem">
+      <Typography variant="bold_16px" margin="0 0 0 1.2rem" userSelect="none">
         Logout
-      </TextRegular>
+      </Typography>
     </LogoutBtnWrapper>
   );
 };

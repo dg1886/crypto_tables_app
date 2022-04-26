@@ -27,26 +27,19 @@ export const Profile = styled.div`
   }
 `;
 
-export const UserNameTag = styled.div`
-  font-family: ${({ theme }) => theme.fontFamily.primary};
-  font-weight: bold;
-  font-style: normal;
-  font-size: ${({ theme }) => theme.fontSize.large};
-  user-select: none;
-`;
-
 export const Menu = styled.div`
   position: absolute;
   top: 4.688rem;
   right: -0.5rem;
   padding: 0.6rem 1.25rem;
-  background: backgroundgray;
+  background-color: ${({ theme }) => theme.colors.userMenuBackground};
   width: 12.5rem;
   border-radius: 1rem;
   transition: visibility 0.9s, opacity 0.9s;
   visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
   opacity: ${(props) => (props.isOpen ? 1 : 0)};
   z-index: 200;
+  text-align: center;
 
   :before {
     content: "";
@@ -55,7 +48,7 @@ export const Menu = styled.div`
     right: 1.75rem;
     width: 1.25rem;
     height: 1.25rem;
-    background: backgroundgray;;
+    background: ${({ theme }) => theme.colors.userMenuBackground};
     transform: rotate(45deg);
   }
 `;
@@ -64,7 +57,7 @@ export const H4 = styled.h4`
   width: 100%;
   text-align: center;
   font-size: 18px;
-  padding: 1.25rem 0;
+  padding: 0.2rem 0;
   font-family: ${({ theme }) => theme.fontFamily.primary};
   font-weight: 500;
   font-style: normal;
@@ -79,6 +72,7 @@ export const Ul = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  user-select: none;
 `;
 
 export const Li = styled.li`
@@ -92,7 +86,6 @@ export const Li = styled.li`
   font-family: ${({ theme }) => theme.fontFamily.primary};
   font-weight: 500;
   font-style: normal;
-  color: ${({ theme }) => theme.colors.background};
   letter-spacing: ${({ theme }) => theme.letterSpacing.default};
 `;
 

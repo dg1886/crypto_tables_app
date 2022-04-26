@@ -1,5 +1,5 @@
 import FlexBox from "../CommonUI/FlexBox";
-import Tittle from "../CommonUI/Tittle";
+import Typography from "../Typography";
 import UserMenu from "./UserMenu";
 
 const Header = () => {
@@ -11,10 +11,10 @@ const Header = () => {
       padding="0 2rem"
     >
 
-      <Tittle>Dashboard</Tittle>
+      <Typography variant="bold_24px" userSelect="none" textTransform="capitalize">Dashboard</Typography>
 
       <FlexBox>
-        <input type="text" /> {/* заглушка т.к. будет переиспользован кастомный инпут Сережи */}
+        <input type="text" />
         <UserMenu />
       </FlexBox>
 

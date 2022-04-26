@@ -1,10 +1,10 @@
-import Text from "../../CommonUI/Text";
+import Typography from "../../Typography";
 import Graph from "./Graph";
 
 const MainGraph = () => {
   return (
     <Graph>
-      <Text>MainGraph</Text>
+      <Typography variant="normal_14px">MainGraph</Typography>
     </Graph>
   );
 };
