@@ -24,6 +24,10 @@ export const Profile = styled.div`
     background: rgba(0, 0, 0, 0);
     color: ${({ theme }) => theme.colors.buttonColor};
     box-shadow: inset 0 0 0 3px ${({ theme }) => theme.colors.buttonColor};
+
+    & > span {
+      color: ${({ theme }) => theme.colors.buttonColor};
+    }
   }
 `;
 
@@ -61,7 +65,6 @@ export const H4 = styled.h4`
   font-family: ${({ theme }) => theme.fontFamily.primary};
   font-weight: 500;
   font-style: normal;
-  color: ${({ theme }) => theme.colors.backgroundItems};
   letter-spacing: ${({ theme }) => theme.letterSpacing.default};
   line-height: 1.2em;
 `;
