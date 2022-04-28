@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FlexBox = styled.div`
+const FlexBox = styled.div` 
   display: flex; 
   flex-direction: ${({ flexDirection }) => flexDirection};
   justify-content: ${({ justifyContent }) => justifyContent || "center"};
