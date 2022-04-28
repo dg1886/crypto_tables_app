@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 
 const instance = axios.create({
   baseURL: "https://rest.coinapi.io/v1",
-  headers: { "X-CoinAPI-Key": `${process.env.REACT_APP_API_KEY6}` },
+  headers: { "X-CoinAPI-Key": `${process.env.REACT_APP_API_KEY2}` },
 });
 
 export const ValidPeriods = {

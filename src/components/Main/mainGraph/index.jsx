@@ -4,13 +4,13 @@ import { useTheme } from "styled-components";
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../api/coinapi";
 import FlexBox from "../../CommonUI/FlexBox";
 import Typography from "../../Typography";
+import { prepareDateToMainGraph } from "../helpers/prepareDateToMainGraph";
+import renderGraph from "../helpers/renderGraph";
 import JapanCandles from "./d3Candle";
 import BarChart from "./d3Chart";
 import Container, { BarGraph, Graph } from "./Graph";
-import { prepareDateToMainGraph } from "./helpers";
 import InfoBlock from "./InfoBlock";
 import PeriodButton from "./PeriodButton";
-import renderGraph from "./renderGraph";
 
 const buttons = [
   { text: "1D", value: ValidPeriods.DAY },
@@ -36,9 +36,8 @@ const Periods = ({ setData, setPeriod }) => {
   });
 };
 
-const MainGraph = () => {
+const MainGraph = ({ data, setData }) => {
   const [period, setPeriod] = useState(ValidPeriods.DAY);
-  const [data, setData] = useState([]);
   const [focusCandle, setFocusCandle] = useState({});
   const { graphColors } = useTheme();
   const mainGraphRef = useRef(null);
@@ -47,14 +46,6 @@ const MainGraph = () => {
     ?.map((item) => item.volume)
     .reduce((sum, current) => (sum + current), 0))
     .toFixed(1);
-
-  useEffect(() => {
-    BtcUsdPeriodOHLC(ValidPeriods.DAY).then((res) => {
-      const prepareData = prepareDateToMainGraph(res);
-      setData(prepareData);
-      setFocusCandle(prepareData[0]);
-    });
-  }, []);
 
   useEffect(() => {
     renderGraph({
@@ -67,6 +58,8 @@ const MainGraph = () => {
         colors: graphColors,
       },
     });
+
+    setFocusCandle(data[0]);
 
     renderGraph({
       ref: secondGraphRef,
