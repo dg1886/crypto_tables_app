@@ -6,7 +6,7 @@ import TransactionBar from "./transactionBar";
 
 const MainContent = () => {
   return (
-    <FlexBox width="100%" flexDirection="column">
+    <FlexBox width="100%" flexDirection="column" padding=" 0 1rem 1rem 1rem">
       <FlexBox width="100%" justifyContent="space-between">
         <GraphsSmall />
         <GraphsSmall />
