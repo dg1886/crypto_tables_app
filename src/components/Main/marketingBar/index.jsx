@@ -1,10 +1,10 @@
-import Text from "../../CommonUI/Text";
+import Typography from "../../Typography";
 import Marketing from "./MarketingBar";
 
 const MarketingBar = () => {
   return (
     <Marketing>
-      <Text>MarketingBar</Text>
+      <Typography variant="normal_14px">MarketingBar</Typography>
     </Marketing>
   );
 };

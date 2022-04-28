@@ -6,7 +6,7 @@ import MarketIcon from "../CommonUI/Icons/MarketIcon";
 import MessagesIcon from "../CommonUI/Icons/MessagesIcon";
 import StatisticsIcon from "../CommonUI/Icons/StatisticsIcon";
 import WalletIcon from "../CommonUI/Icons/WalletIcon";
-import { SidebarText } from "../Text/SidebarText";
+import Typography from "../Typography";
 import { NavigationItemWrap } from "./styled";
 
 const NavigationItem = ({
@@ -15,9 +15,13 @@ const NavigationItem = ({
   return (
     <NavigationItemWrap isActive={isActive} onClick={onClick}>
       {icon}
-      <SidebarText isActive={isActive} padding="0 0.5rem">
+      <Typography
+        variant={isActive ? "sidebar_active_text" : "sidebar_inactive_text"}
+        isActive={isActive}
+        padding="0 0 0 1.2rem"
+      >
         {name}
-      </SidebarText>
+      </Typography>
     </NavigationItemWrap>
   );
 };

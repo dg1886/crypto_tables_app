@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavigationItemWrap = styled.div`
-  width: 100%;
+  width: 90%;
   height: 3.5rem;
   display: flex;
   flex-direction: row;
@@ -11,7 +11,7 @@ export const NavigationItemWrap = styled.div`
   border-radius: 0.6rem;
   cursor: pointer;
   margin-top: 0.5rem;
-  padding: 0 0.6rem;
+  padding-left: 1.6rem;
   box-sizing: border-box;
-  
+
 `;

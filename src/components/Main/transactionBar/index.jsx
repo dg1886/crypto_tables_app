@@ -1,10 +1,10 @@
-import Text from "../../CommonUI/Text";
+import Typography from "../../Typography";
 import Transaction from "./TransactionBar";
 
 const TransactionBar = () => {
   return (
     <Transaction>
-      <Text>SideBar</Text>
+      <Typography variant="normal_14px">SideBar</Typography>
     </Transaction>
   );
 };
