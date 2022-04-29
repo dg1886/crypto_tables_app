@@ -5,6 +5,11 @@ export const dark = {
   letterSpacing: {
     default: "1px",
   },
+  fontSize: {
+    large: "1.5rem",
+    normal: "1rem",
+    small: "0.875rem",
+  },
   iconSize: {
     height: "1.875rem",
     width: "1.875rem",
@@ -93,6 +98,23 @@ export const dark = {
     textTransform: "capitalize",
     userSelect: "none",
   },
+  user_name_tag: {
+    fontFamily: "Gilroy",
+    fontWeight: "bold",
+    fontStyle: "normal",
+    fontSize: "1.5rem",
+    color: "#0f0f0f",
+    userSelect: "none",
+  },
+  form_validation: {
+    height: "1.125rem",
+    fontFamily: "Gilroy",
+    fontWeight: "normal",
+    fontStyle: "normal",
+    fontSize: "0.875rem",
+    color: "#ae5467",
+    letterSpacing: "1px",
+  },
 };
 
 export const light = {
@@ -101,6 +123,11 @@ export const light = {
   },
   letterSpacing: {
     default: "1px",
+  },
+  fontSize: {
+    large: "1.5rem",
+    normal: "1rem",
+    small: "0.875rem",
   },
   iconSize: {
     height: "1.875rem",
@@ -197,5 +224,14 @@ export const light = {
     fontSize: "1.5rem",
     color: "#fffffd",
     userSelect: "none",
+  },
+  form_validation: {
+    height: "1.2rem",
+    fontFamily: "Gilroy",
+    fontWeight: "normal",
+    fontStyle: "normal",
+    fontSize: "0.875rem",
+    color: "#ae5467",
+    letterSpacing: "1px",
   },
 };

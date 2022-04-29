@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTheme } from "styled-components";
 
+import { TAB_NAMES } from "../../constants/names";
 import DashboardIcon from "../CommonUI/Icons/DashboardIcon";
 import MarketIcon from "../CommonUI/Icons/MarketIcon";
 import MessagesIcon from "../CommonUI/Icons/MessagesIcon";
@@ -25,19 +27,25 @@ const NavigationItem = ({
     </NavigationItemWrap>
   );
 };
-const navigationiConfig = [
-  { name: "dashboard", icon: (color) => <DashboardIcon fill={color} />, key: 1 },
-  { name: "wallet", icon: (color) => <WalletIcon fill={color} />, key: 2 },
-  { name: "market", icon: (color) => <MarketIcon fill={color} />, key: 3 },
-  { name: "statistic", icon: (color) => <StatisticsIcon fill={color} />, key: 4 },
-  { name: "messages", icon: (color) => <MessagesIcon fill={color} />, key: 5 },
+
+const navigationConfig = [
+  { name: TAB_NAMES.DASHBOARD, icon: (color) => <DashboardIcon fill={color} />, key: 1 },
+  { name: TAB_NAMES.WALLET, icon: (color) => <WalletIcon fill={color} />, key: 2 },
+  { name: TAB_NAMES.MARKET, icon: (color) => <MarketIcon fill={color} />, key: 3 },
+  { name: TAB_NAMES.STATISTICS, icon: (color) => <StatisticsIcon fill={color} />, key: 4 },
+  { name: TAB_NAMES.MESSAGES, icon: (color) => <MessagesIcon fill={color} />, key: 5 },
 ];
 
 const Navigation = () => {
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState(TAB_NAMES.DASHBOARD);
   const { colors } = useTheme();
 
-  return navigationiConfig.map((item) => {
+  useEffect(() => {
+    navigate(activeTab);
+  }, [activeTab]);
+
+  return navigationConfig.map((item) => {
     const isActive = activeTab === item.name;
     const color = isActive ? colors.sideBarIconsActive : colors.sideBarIconsNoActive;
     return (
