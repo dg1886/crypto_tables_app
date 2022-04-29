@@ -22,9 +22,9 @@ export const dark = {
     sideBarIconsNoActive: "#838383",
     sideBarTextActive: "#fffffd",
     sideBarTextNoActive: "#838383",
+    red: "#ae5467",
+    lightGrey: "#383838",
     buttonColor: "#e36d85",
-    grpahCandleBlue: "#29a5e9",
-    grpahCandleRed: "#ae5467",
     hoverButton: "#ae5467",
     userMenuBackground: "#838383",
   },
@@ -32,7 +32,7 @@ export const dark = {
     primary: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
     secondary: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   },
-
+  graphColors: ["#29a5e9", "#ffffff", "#ae5467"],
   bold_24px: {
     fontFamily: "Gilroy",
     fontWeight: "bold",
@@ -46,6 +46,14 @@ export const dark = {
     fontWeight: "bold",
     fontStyle: "normal",
     fontSize: "1rem",
+    color: "#ffffff",
+    letterSpacing: "1px",
+  },
+  normal_18px: {
+    fontFamily: "Gilroy",
+    fontWeight: "normal",
+    fontStyle: "normal",
+    fontSize: "1.125rem",
     color: "#ffffff",
     letterSpacing: "1px",
   },
@@ -85,14 +93,6 @@ export const dark = {
     textTransform: "capitalize",
     userSelect: "none",
   },
-  user_name_tag: {
-    fontFamily: "Gilroy",
-    fontWeight: "bold",
-    fontStyle: "normal",
-    fontSize: "1.5rem",
-    color: "#0f0f0f",
-    userSelect: "none",
-  },
 };
 
 export const light = {
@@ -120,8 +120,8 @@ export const light = {
     sideBarTextActive: "#fffffd",
     sideBarTextNoActive: "#838383",
     buttonColor: "#7957c0",
-    grpahCandleBlue: "#a49df1",
-    grpahCandleRed: "#d09da8",
+    red: "#ae5467",
+    lightGrey: "#383838",
     hoverButton: "#ae5467",
     userMenuBackground: "#838383",
   },
@@ -129,7 +129,7 @@ export const light = {
     primary: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
     secondary: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   },
-
+  graphColors: ["#29a5e9", "#080808", "#ae5467"],
   bold_24px: {
     fontFamily: "Gilroy",
     fontWeight: "bold",
@@ -143,6 +143,14 @@ export const light = {
     fontWeight: "bold",
     fontStyle: "normal",
     fontSize: "1rem",
+    color: "#080808",
+    letterSpacing: "1px",
+  },
+  normal_18px: {
+    fontFamily: "Gilroy",
+    fontWeight: "normal",
+    fontStyle: "normal",
+    fontSize: "1.125rem",
     color: "#080808",
     letterSpacing: "1px",
   },
