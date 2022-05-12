@@ -1,15 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import MocUsers from "../common/users.json";
 import Button from "../components/CommonUI/Button";
 import FlexBox from "../components/CommonUI/FlexBox";
 import Logo from "../components/CommonUI/Icons/Logo";
 import Input from "../components/CommonUI/Input";
-import Text from "../components/CommonUI/Text";
-import Tittle from "../components/CommonUI/Tittle";
-import BackToReg from "../components/Login/backToReg";
+import StyledLink from "../components/CommonUI/StyledLink";
+import Modal from "../components/Modal";
+import Typography from "../components/Typography";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
+  const [showModal, setShowModal] = useState(false);
+
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -67,7 +72,7 @@ const LoginPage = () => {
       (item) => item.email === inputs.email,
     );
     if (checkUser?.password === inputs.password) {
-      // navigate("") for future routing;
+      navigate("/dashboard");
       localStorage.setItem(
         "user",
         JSON.stringify({
@@ -75,6 +80,9 @@ const LoginPage = () => {
           role: checkUser.role,
         }),
       );
+    }
+    if (checkUser?.password !== inputs.password) {
+      setShowModal(true);
     }
   };
 
@@ -97,12 +105,12 @@ const LoginPage = () => {
       >
         <FlexBox>
           <Logo />
-          <Tittle padding="0 0.625rem">Login</Tittle>
+          <Typography variant="bold_24px" padding="0 0.625rem">Login</Typography>
         </FlexBox>
 
-        <FlexBox flexDirection="column" height="15.625rem" justifyContent="space-evenly">
+        <FlexBox flexDirection="column" height="15.625rem" width="100%" justifyContent="space-evenly">
 
-          <FlexBox flexDirection="column">
+          <FlexBox flexDirection="column" width="100%">
             <Input
               name="email"
               type="email"
@@ -110,10 +118,10 @@ const LoginPage = () => {
               value={inputs.email}
               placeholder="Email"
             />
-            <Text height="1.125rem">{errors.email && errors.email}</Text>
+            <Typography variant="form_validation">{errors.email && errors.email}</Typography>
           </FlexBox>
 
-          <FlexBox flexDirection="column">
+          <FlexBox flexDirection="column" width="100%">
             <Input
               name="password"
               type="password"
@@ -121,13 +129,20 @@ const LoginPage = () => {
               value={inputs.password}
               placeholder="Password"
             />
-            <Text height="1.125rem">{errors.password && errors.password}</Text>
+            <Typography variant="form_validation">{errors.password && errors.password}</Typography>
           </FlexBox>
 
         </FlexBox>
         <Button onClick={onSubmit}>Submit</Button>
-        <BackToReg>to registration</BackToReg>
+        <StyledLink href="/registration" content="or register" padding="1.25rem 0 0.313rem 0" />
       </FlexBox>
+
+      <Modal
+        active={showModal}
+        hideModal={() => setShowModal(false)}
+        title="Registration failed"
+      >Please try again
+      </Modal>;
     </FlexBox>
   );
 };
