@@ -3,6 +3,8 @@ import { useTheme } from "styled-components";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../api/coinapi";
 import FlexBox from "../../CommonUI/FlexBox";
+import { prepareDateToGraphs } from "../../Helpers/helperData";
+import renderGraph from "../../Helpers/renderGraph";
 import Typography from "../../Typography";
 import { prepareDateToMainGraph } from "../helpers/prepareDateToMainGraph";
 import renderGraph from "../helpers/renderGraph";
@@ -25,7 +27,7 @@ const Periods = ({ setData, setPeriod }) => {
     const isActive = activeButton === item.value;
     const handlePeriod = () => {
       setActiveButton(item.value);
-      BtcUsdPeriodOHLC(item.value).then((res) => setData(prepareDateToMainGraph(res)));
+      BtcUsdPeriodOHLC(item.value).then((res) => setData(prepareDateToGraphs(res)));
       setPeriod(item.value);
     };
     return (

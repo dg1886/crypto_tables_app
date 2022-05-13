@@ -38,8 +38,10 @@ export const dark = {
     primary: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
     secondary: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   },
+
   graphColors: ["#29a5e9", "#ffffff", "#ae5467"],
   lineChartColors: ["#4682b4", "#1f2422", "#ae5467"],
+
   bold_24px: {
     fontFamily: "Gilroy",
     fontWeight: "bold",
@@ -78,6 +80,22 @@ export const dark = {
     fontStyle: "normal",
     fontSize: "0.875rem",
     color: "#ffffff",
+    letterSpacing: "1px",
+  },
+  price_up: {
+    fontFamily: "Gilroy",
+    fontWeight: "normal",
+    fontStyle: "normal",
+    fontSize: "1rem",
+    color: "#29a5e9",
+    letterSpacing: "1px",
+  },
+  price_down: {
+    fontFamily: "Gilroy",
+    fontWeight: "normal",
+    fontStyle: "normal",
+    fontSize: "1rem",
+    color: "#ae5467",
     letterSpacing: "1px",
   },
   sidebar_active_text: {
@@ -159,8 +177,10 @@ export const light = {
     primary: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
     secondary: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   },
+
   graphColors: ["#29a5e9", "#080808", "#ae5467"],
   lineChartColors: ["#4682b4", "#d7dffd", "#ae5467"],
+
   bold_24px: {
     fontFamily: "Gilroy",
     fontWeight: "bold",
@@ -199,6 +219,22 @@ export const light = {
     fontStyle: "normal",
     fontSize: "0.875rem",
     color: "#080808",
+    letterSpacing: "1px",
+  },
+  price_up: {
+    fontFamily: "Gilroy",
+    fontWeight: "normal",
+    fontStyle: "normal",
+    fontSize: "1rem",
+    color: "#29a5e9",
+    letterSpacing: "1px",
+  },
+  price_down: {
+    fontFamily: "Gilroy",
+    fontWeight: "normal",
+    fontStyle: "normal",
+    fontSize: "1rem",
+    color: "#ae5467",
     letterSpacing: "1px",
   },
   sidebar_active_text: {
