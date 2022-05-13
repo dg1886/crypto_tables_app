@@ -81,7 +81,7 @@ const MarketingBar = () => {
 
             <FlexBox backColor={index % 2 ? "background" : "backgroundItems"} justifyContent="flex-start">
               {item.icon}
-              <Typography variant="normal_16px" padding="0 1rem">{item.name}</Typography>
+              <Typography variant="bold_16px" padding="0 1rem">{item.name}</Typography>
             </FlexBox>
 
             <Typography variant="normal_16px">

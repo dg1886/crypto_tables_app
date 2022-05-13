@@ -53,6 +53,7 @@ export const dark = {
     fontSize: "1rem",
     color: "#ffffff",
     letterSpacing: "1px",
+    textTransform: "capitalize",
   },
   normal_18px: {
     fontFamily: "Gilroy",
@@ -188,6 +189,7 @@ export const light = {
     fontSize: "1rem",
     color: "#080808",
     letterSpacing: "1px",
+    textTransform: "capitalize",
   },
   normal_18px: {
     fontFamily: "Gilroy",
