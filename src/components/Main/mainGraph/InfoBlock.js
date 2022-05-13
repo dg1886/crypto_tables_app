@@ -4,7 +4,7 @@ const InfoBlock = styled.div`
 top:0;
 left:0;
 background-color: transparent;
-width: 26rem;
+width: 27rem;
 height: 10rem;
 position: absolute;
 `;
