@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-export const prepareDateToMainGraph = (data) => data.map(({
+export const prepareDateToGraphs = (data) => data.map(({
   price_close, price_high, price_low, price_open, time_period_start, volume_traded,
 }) => ({
   date: dayjs(time_period_start).toISOString(),
