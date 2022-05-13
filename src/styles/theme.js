@@ -32,12 +32,16 @@ export const dark = {
     buttonColor: "#e36d85",
     hoverButton: "#ae5467",
     userMenuBackground: "#838383",
+    inherit: "inherit",
   },
   boxShadow: {
     primary: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
     secondary: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   },
-  graphColors: ["#ae5467", "#ffffff", "#29a5e9"],
+
+  graphColors: ["#29a5e9", "#ffffff", "#ae5467"],
+  lineChartColors: ["#4682b4", "#1f2422", "#ae5467"],
+
   bold_24px: {
     fontFamily: "Gilroy",
     fontWeight: "bold",
@@ -167,12 +171,16 @@ export const light = {
     lightGrey: "#383838",
     hoverButton: "#ae5467",
     userMenuBackground: "#838383",
+    inherit: "inherit",
   },
   boxShadow: {
     primary: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
     secondary: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   },
-  graphColors: ["#ae5467", "#080808", "#29a5e9"],
+
+  graphColors: ["#29a5e9", "#080808", "#ae5467"],
+  lineChartColors: ["#4682b4", "#d7dffd", "#ae5467"],
+
   bold_24px: {
     fontFamily: "Gilroy",
     fontWeight: "bold",

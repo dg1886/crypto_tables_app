@@ -1,21 +1,41 @@
+import { useEffect, useState } from "react";
+
+import BtcUsdPeriodOHLC, { ValidPeriods } from "../../api/coinapi";
 import FlexBox from "../CommonUI/FlexBox";
+import { prepareDateToMainGraph } from "./helpers/prepareDateToMainGraph";
+import { prepareLineChartDataHelper } from "./helpers/prepareLineChartData";
+import SmallLineChart from "./lineChart";
 import MainGraph from "./mainGraph";
 import MarketingBar from "./marketingBar";
-import GraphsSmall from "./smallGraphs/SmallGraphs";
 import TransactionBar from "./transactionBar";
 
 const MainContent = () => {
+  const [data, setData] = useState([]);
+  const [lineChartData, setLineChartData] = useState([]);
+
+  useEffect(() => {
+    BtcUsdPeriodOHLC(ValidPeriods.DAY).then((res) => {
+      const prepareData = prepareDateToMainGraph(res);
+      setData(prepareData);
+    });
+    (async () => {
+      const res = await BtcUsdPeriodOHLC(ValidPeriods.MONTH);
+      const prepareLineChartData = prepareLineChartDataHelper(res);
+      setLineChartData(prepareLineChartData);
+    })();
+  }, []);
+
   return (
     <FlexBox width="100%" flexDirection="column" height="calc(100% - 8rem)" padding="0 1rem ">
       <FlexBox width="100%" justifyContent="space-between">
-        <GraphsSmall />
-        <GraphsSmall />
-        <GraphsSmall />
-        <GraphsSmall />
+        <SmallLineChart data={lineChartData} />
+        <SmallLineChart data={lineChartData} />
+        <SmallLineChart data={lineChartData} />
+        <SmallLineChart data={lineChartData} />
       </FlexBox>
 
       <FlexBox justifyContent="space-between" width="100%" padding="1rem 0">
-        <MainGraph />
+        <MainGraph data={data} setData={setData} />
         <TransactionBar />
       </FlexBox>
 
