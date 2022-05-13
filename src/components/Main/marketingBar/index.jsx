@@ -6,7 +6,7 @@ import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
 import BnbIcon from "../../CommonUI/Icons/BnbIcon";
 import EthereumIcon from "../../CommonUI/Icons/UsdcIcon";
-import { prepareDateToGraphs } from "../../Helpers/helperData";
+import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
 import Typography from "../../Typography";
 import Graph from "./Graph";
 import Marketing, {

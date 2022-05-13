@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React from "react";
 
 import FlexBox from "../../CommonUI/FlexBox";
@@ -35,9 +36,9 @@ const TransactionBar = ({ data }) => {
 
               <FlexBox backColor={index % 2 === 1 ? "backgroundItems" : "background"} alignItems="flex-end" flexDirection="column">
                 <Typography variant="bold_16px">
-                  {data?.close}$44400
+                  {data[0]?.close}$
                 </Typography>
-                <Typography variant="normal_14px" padding="0 1rem">Today,15PM{data?.time_start}</Typography>
+                <Typography variant="normal_14px">{dayjs(data[0]?.date).format("ddd, HH:mm A")}</Typography>
               </FlexBox>
 
             </Content>

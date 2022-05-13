@@ -3,7 +3,7 @@ import * as d3 from "d3";
 export default function BarChart(data, {
   x = (d, i) => i, // given d in data, returns the (ordinal) x-value
   y = (d) => d.close, // given d in data, returns the (quantitative) y-value
-  marginRight = 0, // the right margin, in pixels
+  marginRight = 45, // the right margin, in pixels
   width = 1100, // the outer width of the chart, in pixels
   height = 400, // the outer height of the chart, in pixels
   xRange = [0, width - marginRight], // [left, right]
@@ -28,8 +28,6 @@ export default function BarChart(data, {
   const yScale = yType(yDomain, yRange);
 
   const svg = d3.create("svg")
-    .attr("width", width)
-    .attr("height", height)
     .attr("viewBox", [0, 0, width, height])
     .attr("style", "min-width: 100%; max-height: 100%;");
 

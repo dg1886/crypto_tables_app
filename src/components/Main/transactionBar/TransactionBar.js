@@ -17,11 +17,13 @@ export default Transaction;
 
 export const Content = styled.div`
 display: grid;
+width: 100%;
 grid-template-columns: 0.2fr 1fr 1.8fr;
 grid-template-rows: 5rem;
 align-items: center;
 padding: 0 1rem;
-background-color: ${({ backColor, theme }) => theme.colors[backColor]}
+background-color: ${({ backColor, theme }) => theme.colors[backColor]};
+box-sizing: border-box;
 `;
 
 export const Tittle = styled.div`

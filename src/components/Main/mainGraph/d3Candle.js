@@ -18,7 +18,7 @@ export default function JapanCandles(data, {
   marginRight = 8, // right margin, in pixels
   marginBottom = 40, // bottom margin, in pixels
   marginLeft = 20, // left margin, in pixels
-  width = 1100, // outer width, in pixels
+  width = 1050, // outer width, in pixels
   height = 420, // outer height, in pixels
   colors = ["green", "grey", "red"], // [up, no change, down]
 } = {}) {
@@ -75,7 +75,7 @@ export default function JapanCandles(data, {
   const xScale = d3.scaleBand().domain(xDomain).range(xRange);
   const yScale = yType(yDomain, yRange);
   const xAxis = d3.axisBottom(xScale).tickFormat(d3.utcFormat(xFormat)).tickValues(xTicks);
-  const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
+  const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat).tickFormat(d3.format("~s"));
 
   // Compute titles.
 
@@ -89,10 +89,8 @@ Low: ${formatValue(Yl[i])}
 High: ${formatValue(Yh[i])}`;
 
   const svg = d3.create("svg")
-    .attr("width", width)
-    .attr("height", height)
     .attr("viewBox", [0, 0, width, height])
-    .attr("style", "min-width: 100%; min-height: 100%; ");
+    .attr("style", "width: 100%; height: 100%; ");
   svg.append("g")
     .attr("transform", `translate(0,${height - marginBottom})`)
     .call(xAxis)
@@ -107,7 +105,8 @@ High: ${formatValue(Yh[i])}`;
       .attr("stroke-opacity", 0)
       .attr("x2", width - marginRight)
       .attr("transform", `translate(${-width - marginLeft},0)`))
-    .attr("color", colors[1]);
+    .attr("color", colors[1])
+    .attr("font-size", "0.8rem");
 
   const g = svg.append("g")
     .attr("stroke-linecap", strokeLinecap)
