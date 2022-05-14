@@ -3,17 +3,19 @@ import React from "react";
 
 import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
-import BnbIcon from "../../CommonUI/Icons/BnbIcon";
+import CardanoIcon from "../../CommonUI/Icons/Cardano";
+import PolkadotIcon from "../../CommonUI/Icons/Polkadot";
+import SolanaIcon from "../../CommonUI/Icons/Solana";
 import EthereumIcon from "../../CommonUI/Icons/UsdcIcon";
 import Typography from "../../Typography";
 import Transaction, { Border, Content, Tittle } from "./TransactionBar";
 
 const coinNames = [
   { name: "bitcoin", icon: <BitcoinIcon />, info: "Buy" },
-  { name: "ethirium", icon: <EthereumIcon />, info: "Sell" },
-  { name: "bnb", icon: <BnbIcon />, info: "Buy" },
-  { name: "cardano", icon: <EthereumIcon />, info: "Buy" },
-  { name: "solana", icon: <BnbIcon />, info: "Sell" },
+  { name: "ethereum", icon: <EthereumIcon />, info: "Sell" },
+  { name: "polkadot", icon: <PolkadotIcon />, info: "Buy" },
+  { name: "cardano", icon: <CardanoIcon />, info: "Buy" },
+  { name: "solana", icon: <SolanaIcon />, info: "Sell" },
 ];
 
 const TransactionBar = ({ data }) => {

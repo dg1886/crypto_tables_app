@@ -15,7 +15,7 @@ import Marketing, {
 
 const coinNames = [
   { name: "bitcoin", icon: <BitcoinIcon /> },
-  { name: "ethirium", icon: <EthereumIcon /> },
+  { name: "ethereum", icon: <EthereumIcon /> },
   { name: "bnb", icon: <BnbIcon /> },
 ];
 
@@ -106,7 +106,7 @@ const MarketingBar = () => {
               ${data.volume24}
             </Typography>
 
-            <Graph data={data.day7} color={graphColors[1 + Math.sign(data.procent7Day)]} />
+            <Graph data={data.day7} color={graphColors[1 - Math.sign(data.procent7Day)]} />
 
           </Content>
 
