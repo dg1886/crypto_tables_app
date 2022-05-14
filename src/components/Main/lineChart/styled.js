@@ -3,8 +3,9 @@ import styled from "styled-components";
 import Typography from "../../Typography";
 
 export const LineChartWrapper = styled.div`
-  width: 320px;
-  height: 130px;
+  width: 350px;
+  //height: 130px;
+  height: 150px;
   padding-top: 8px;
   box-sizing: border-box;
   scroll-behavior: auto;

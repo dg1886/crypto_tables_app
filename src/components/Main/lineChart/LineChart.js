@@ -5,9 +5,9 @@ function LineChart(data, {
   y,
   curve = d3.curveMonotoneX, // method of interpolation between points
   marginTop = 40, // top margin, in pixels
-  marginRight = -4, // right margin, in pixels
+  marginRight = -18, // right margin, in pixels
   marginBottom = 15, // bottom margin, in pixels
-  marginLeft = -4, // left margin, in pixels
+  marginLeft = -18, // left margin, in pixels
   width = 320, // outer width, in pixels
   height = 115, // outer height, in pixels
   xRange = [marginLeft, width - marginRight], // [left, right]

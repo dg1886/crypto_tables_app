@@ -25,7 +25,7 @@ const MainContent = () => {
   }, []);
 
   return (
-    <FlexBox width="100%" flexDirection="column" height="calc(100% - 8rem)" padding="0 1rem ">
+    <FlexBox width="100%" flexDirection="column" height="calc(100% - 6rem)" padding="0 1rem ">
       <FlexBox width="100%" justifyContent="space-between">
         <SmallLineChart data={lineChartData} />
         <SmallLineChart data={lineChartData} />
