@@ -19,7 +19,7 @@ const Layout = () => {
         width="100%"
         height="100%"
         flexDirection="column"
-        padding="0 1.5rem 2rem 2rem"
+        padding="0 1.5rem 0.5rem 2rem"
         justifyContent="space-between"
       >
         <Header />
