@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../api/coinapi";
 import FlexBox from "../CommonUI/FlexBox";
-import { prepareDateToGraphs } from "../Helpers/helperData";
+import { prepareDateToGraphs } from "../Helpers/prepareDatatoGraphs";
 import { prepareLineChartDataHelper } from "../Helpers/prepareLineChartData";
 import SmallLineChart from "./lineChart";
 import MainGraph from "./mainGraph";
@@ -18,11 +18,10 @@ const MainContent = () => {
       const prepareData = prepareDateToGraphs(res);
       setData(prepareData);
     });
-    (async () => {
-      const res = await BtcUsdPeriodOHLC(ValidPeriods.MONTH);
+    BtcUsdPeriodOHLC(ValidPeriods.MONTH).then((res) => {
       const prepareLineChartData = prepareLineChartDataHelper(res);
       setLineChartData(prepareLineChartData);
-    })();
+    });
   }, []);
 
   return (
@@ -36,7 +35,7 @@ const MainContent = () => {
 
       <FlexBox justifyContent="space-between" width="100%" padding="1rem 0">
         <MainGraph data={data} setData={setData} />
-        <TransactionBar />
+        <TransactionBar data={data} />
       </FlexBox>
 
       <MarketingBar />

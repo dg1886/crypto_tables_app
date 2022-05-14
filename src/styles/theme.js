@@ -39,7 +39,7 @@ export const dark = {
     secondary: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   },
 
-  graphColors: ["#29a5e9", "#ffffff", "#ae5467"],
+  graphColors: ["#ae5467", "#ffffff", "#29a5e9"],
   lineChartColors: ["#4682b4", "#1f2422", "#ae5467"],
 
   bold_24px: {
@@ -57,6 +57,7 @@ export const dark = {
     fontSize: "1rem",
     color: "#ffffff",
     letterSpacing: "1px",
+    textTransform: "capitalize",
   },
   normal_18px: {
     fontFamily: "Gilroy",
@@ -178,7 +179,7 @@ export const light = {
     secondary: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px",
   },
 
-  graphColors: ["#29a5e9", "#080808", "#ae5467"],
+  graphColors: ["#ae5467", "#080808", "#29a5e9"],
   lineChartColors: ["#4682b4", "#d7dffd", "#ae5467"],
 
   bold_24px: {
@@ -196,6 +197,7 @@ export const light = {
     fontSize: "1rem",
     color: "#080808",
     letterSpacing: "1px",
+    textTransform: "capitalize",
   },
   normal_18px: {
     fontFamily: "Gilroy",

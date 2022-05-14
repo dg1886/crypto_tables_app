@@ -6,7 +6,7 @@ import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
 import BnbIcon from "../../CommonUI/Icons/BnbIcon";
 import EthereumIcon from "../../CommonUI/Icons/UsdcIcon";
-import { prepareDateToGraphs } from "../../Helpers/helperData";
+import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
 import Typography from "../../Typography";
 import Graph from "./Graph";
 import Marketing, {
@@ -81,7 +81,7 @@ const MarketingBar = () => {
 
             <FlexBox backColor={index % 2 ? "background" : "backgroundItems"} justifyContent="flex-start">
               {item.icon}
-              <Typography variant="normal_16px" padding="0 1rem">{item.name}</Typography>
+              <Typography variant="bold_16px" padding="0 1rem">{item.name}</Typography>
             </FlexBox>
 
             <Typography variant="normal_16px">

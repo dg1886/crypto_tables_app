@@ -3,7 +3,7 @@ import { useTheme } from "styled-components";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../api/coinapi";
 import FlexBox from "../../CommonUI/FlexBox";
-import { prepareDateToGraphs } from "../../Helpers/helperData";
+import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
 import renderGraph from "../../Helpers/renderGraph";
 import Typography from "../../Typography";
 import JapanCandles from "./d3Candle";
@@ -48,6 +48,8 @@ const MainGraph = ({ data, setData }) => {
     .toFixed(1);
 
   useEffect(() => {
+    setFocusCandle(data[0]);
+
     renderGraph({
       ref: mainGraphRef,
       graph: JapanCandles,
@@ -58,8 +60,6 @@ const MainGraph = ({ data, setData }) => {
         colors: graphColors,
       },
     });
-
-    setFocusCandle(data[0]);
 
     renderGraph({
       ref: secondGraphRef,
