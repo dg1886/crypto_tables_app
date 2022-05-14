@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../api/coinapi";
 import FlexBox from "../CommonUI/FlexBox";
-import { prepareDateToMainGraph } from "./helpers/prepareDateToMainGraph";
-import { prepareLineChartDataHelper } from "./helpers/prepareLineChartData";
+import { prepareDateToGraphs } from "../Helpers/helperData";
+import { prepareLineChartDataHelper } from "../Helpers/prepareLineChartData";
 import SmallLineChart from "./lineChart";
 import MainGraph from "./mainGraph";
 import MarketingBar from "./marketingBar";
@@ -15,7 +15,7 @@ const MainContent = () => {
 
   useEffect(() => {
     BtcUsdPeriodOHLC(ValidPeriods.DAY).then((res) => {
-      const prepareData = prepareDateToMainGraph(res);
+      const prepareData = prepareDateToGraphs(res);
       setData(prepareData);
     });
     (async () => {

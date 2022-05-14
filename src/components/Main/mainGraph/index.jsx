@@ -6,8 +6,6 @@ import FlexBox from "../../CommonUI/FlexBox";
 import { prepareDateToGraphs } from "../../Helpers/helperData";
 import renderGraph from "../../Helpers/renderGraph";
 import Typography from "../../Typography";
-import { prepareDateToMainGraph } from "../helpers/prepareDateToMainGraph";
-import renderGraph from "../helpers/renderGraph";
 import JapanCandles from "./d3Candle";
 import BarChart from "./d3Chart";
 import Container, { BarGraph, Graph } from "./Graph";
