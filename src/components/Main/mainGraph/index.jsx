@@ -67,7 +67,7 @@ const MainGraph = ({ data, setData }) => {
       data,
       options: { colors: graphColors },
     });
-  }, [data, graphColors]);
+  }, [data, graphColors, period]);
 
   return (
     <Container>

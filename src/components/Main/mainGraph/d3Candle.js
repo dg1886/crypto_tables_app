@@ -18,13 +18,13 @@ export default function JapanCandles(data, {
   marginRight = 8, // right margin, in pixels
   marginBottom = 40, // bottom margin, in pixels
   marginLeft = 20, // left margin, in pixels
-  width = 1050, // outer width, in pixels
+  width = 1100, // outer width, in pixels
   height = 420, // outer height, in pixels
   colors = ["green", "grey", "red"], // [up, no change, down]
 } = {}) {
   const yType = d3.scaleLinear; // type of y-scale
   const yRange = [height - marginBottom, marginTop]; // [bottom, top]
-  const xFormat = "%b %-d"; // a format specifier for the date on the x-axis
+  const xFormat = "%b"; // a format specifier for the date on the x-axis
   const yFormat = "~f"; // a format specifier for the value on the y-axis
   const strokeLinecap = "round"; // stroke line cap for the rules
 
@@ -57,7 +57,7 @@ export default function JapanCandles(data, {
   const minF = () => {
     switch (period) {
       case ValidPeriods.DAY:
-        return { generateXDomain: days, generateXTicks: day, stride: 30 };
+        return { generateXDomain: days, generateXTicks: day, stride: 31 };
       case ValidPeriods.WEEK:
         return { generateXDomain: weekdays, generateXTicks: weeks, stride: 3 };
       case ValidPeriods.MONTH:
@@ -95,7 +95,8 @@ High: ${formatValue(Yh[i])}`;
     .attr("transform", `translate(0,${height - marginBottom})`)
     .call(xAxis)
     .call((g) => g.select(".domain").remove())
-    .attr("color", colors[1]);
+    .attr("color", colors[1])
+    .attr("font-size", "0.8rem");
 
   svg.append("g")
     .attr("transform", `translate(${width + marginRight},0)`)

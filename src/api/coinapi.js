@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 
 const instance = axios.create({
   baseURL: "https://rest.coinapi.io/v1",
-  headers: { "X-CoinAPI-Key": `${process.env.REACT_APP_API_KEY4}` },
+  headers: { "X-CoinAPI-Key": `${process.env.REACT_APP_API_KEY6}` },
 });
 
 export const ValidPeriods = {
@@ -12,7 +12,7 @@ export const ValidPeriods = {
   WEEK: "7DAY",
   DAY: "1DAY",
   HOUR24: "1HRS",
-  DAYS7: "1DAY",
+  DAYS7: "2DAY",
 };
 
 const TimeInPeriods = {
@@ -21,7 +21,7 @@ const TimeInPeriods = {
   [ValidPeriods.WEEK]: [52, "week"],
   [ValidPeriods.DAY]: [180, "day"],
   [ValidPeriods.HOUR24]: [24, "hour"],
-  [ValidPeriods.DAYS7]: [7, "day"],
+  [ValidPeriods.DAYS7]: [28, "day"],
 };
 
 const BtcUsdPeriodOHLC = async (period) => {
