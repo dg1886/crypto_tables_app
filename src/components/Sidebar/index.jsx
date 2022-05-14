@@ -15,7 +15,7 @@ const Sidebar = () => {
       height="100%"
     >
       <div>
-        <FlexBox width="100%" height="8rem" justifyContent="space-between">
+        <FlexBox width="100%" height="6rem" justifyContent="space-between">
           <Logo />
           <Typography variant="bold_24px" padding="0 0 0 0.5rem" userSelect="none">CryptoApp</Typography>
         </FlexBox>
