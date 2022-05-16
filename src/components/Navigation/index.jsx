@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "styled-components";
 
 import { TAB_NAMES } from "../../constants/names";
@@ -29,32 +29,38 @@ const NavigationItem = ({
 };
 
 const navigationConfig = [
-  { name: TAB_NAMES.DASHBOARD, icon: (color) => <DashboardIcon fill={color} />, key: 1 },
-  { name: TAB_NAMES.WALLET, icon: (color) => <WalletIcon fill={color} />, key: 2 },
-  { name: TAB_NAMES.MARKET, icon: (color) => <MarketIcon fill={color} />, key: 3 },
-  { name: TAB_NAMES.STATISTICS, icon: (color) => <StatisticsIcon fill={color} />, key: 4 },
-  { name: TAB_NAMES.MESSAGES, icon: (color) => <MessagesIcon fill={color} />, key: 5 },
+  { name: TAB_NAMES.DASHBOARD, pathname: "/dashboard", icon: (color) => <DashboardIcon fill={color} /> },
+  { name: TAB_NAMES.WALLET, pathname: "/wallet", icon: (color) => <WalletIcon fill={color} /> },
+  { name: TAB_NAMES.MARKET, pathname: "/market", icon: (color) => <MarketIcon fill={color} /> },
+  { name: TAB_NAMES.STATISTICS, pathname: "/statistics", icon: (color) => <StatisticsIcon fill={color} /> },
+  { name: TAB_NAMES.MESSAGES, pathname: "/messages", icon: (color) => <MessagesIcon fill={color} /> },
 ];
 
 const Navigation = () => {
+  const location = useLocation();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState(TAB_NAMES.DASHBOARD);
+  const [activeTab, setActiveTab] = useState(location.pathname);
   const { colors } = useTheme();
 
   useEffect(() => {
     navigate(activeTab);
   }, [activeTab]);
 
+  useEffect(() => {
+    if (location.pathname === "/") setActiveTab("/dashboard");
+    else setActiveTab(location.pathname);
+  }, []);
+
   return navigationConfig.map((item) => {
-    const isActive = activeTab === item.name;
+    const isActive = location.pathname === item.pathname;
     const color = isActive ? colors.sideBarIconsActive : colors.sideBarIconsNoActive;
     return (
       <NavigationItem
         name={item.name}
-        onClick={() => setActiveTab(item.name)}
+        onClick={() => setActiveTab(item.pathname)}
         isActive={isActive}
         icon={item.icon(color)}
-        key={item.key}
+        key={item.pathname}
       />
     );
   });
