@@ -1,8 +1,8 @@
 import * as d3 from "d3";
 
 function LineChart(data, {
-  x,
-  y,
+  x = (d) => d.date,
+  y = (d) => d.close,
   curve = d3.curveMonotoneX, // method of interpolation between points
   marginTop = 40, // top margin, in pixels
   marginRight = -18, // right margin, in pixels
