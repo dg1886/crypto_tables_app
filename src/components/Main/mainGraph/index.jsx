@@ -3,6 +3,7 @@ import { useTheme } from "styled-components";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../api/coinapi";
 import FlexBox from "../../CommonUI/FlexBox";
+import Error from "../../Error";
 import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
 import renderGraph from "../../Helpers/renderGraph";
 import Typography from "../../Typography";
@@ -36,15 +37,14 @@ const Periods = ({ setData, setPeriod }) => {
   });
 };
 
-const MainGraph = ({ data, setData }) => {
+const MainGraph = ({ data, setData, error }) => {
   const [period, setPeriod] = useState(ValidPeriods.DAY);
   const [focusCandle, setFocusCandle] = useState({});
   const { graphColors } = useTheme();
   const mainGraphRef = useRef(null);
   const secondGraphRef = useRef(null);
   const allVolumeTrade = Math.round(data
-    ?.map((item) => item.volume)
-    .reduce((sum, current) => (sum + current), 0))
+    ?.reduce((sum, item) => (sum + item.volume), 0))
     .toFixed(1);
 
   useEffect(() => {
@@ -71,6 +71,7 @@ const MainGraph = ({ data, setData }) => {
 
   return (
     <Container>
+      {error && <Error />}
       <FlexBox margin="0 5rem 0 0">
         <Periods setData={setData} setPeriod={setPeriod} />
       </FlexBox>

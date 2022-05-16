@@ -36,7 +36,8 @@ grid-template-columns: 0.9fr 0.8fr 0.8fr 0.8fr 1fr 1fr 1.2fr;
 grid-template-rows: 2.7rem;
 align-items: center;
 padding: 0 1rem;
-background-color: ${({ backColor, theme }) => theme.colors[backColor]}
+background-color: ${({ backColor, theme }) => theme.colors[backColor]};
+position: relative;
 `;
 
 export const Border = styled.div`

@@ -9,7 +9,7 @@ import {
   ChartText, InfoContainer, LineChartWrapper, PercentInfoContainer,
 } from "./styled";
 
-const SmallLineChart = ({ data }) => {
+const SmallLineChart = ({ data, error }) => {
   const lineChart = useRef(null);
   const { colors, lineChartColors } = useTheme();
 
@@ -52,7 +52,7 @@ const SmallLineChart = ({ data }) => {
         </div>
       </InfoContainer>
       <PercentInfoContainer>
-        <ChartText variant="normal_14px" color={profitPercentHelper}>+{profitPercent}%</ChartText>
+        <ChartText variant="normal_14px" color={profitPercentHelper}>+{error ? "" : profitPercent}%</ChartText>
       </PercentInfoContainer>
       <div ref={lineChart} />
     </LineChartWrapper>

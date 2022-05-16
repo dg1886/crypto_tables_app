@@ -21,7 +21,7 @@ const coinNames = [
 
 const percentDirection = ["↓", "-", "↑"];
 
-const MarketingBar = () => {
+const MarketingBar = ({ error }) => {
   const [data, setData] = useState({ day7: [], hours24: [] });
   const { graphColors } = useTheme();
 
@@ -75,7 +75,7 @@ const MarketingBar = () => {
         <Typography variant="normal_16px">Last 7 Days</Typography>
       </Head>
 
-      {coinNames.map((item, index) => {
+      {error ? <div /> : coinNames.map((item, index) => {
         return (
           <Content backColor={index % 2 ? "background" : "backgroundItems"} key={item.name}>
 
@@ -85,7 +85,7 @@ const MarketingBar = () => {
             </FlexBox>
 
             <Typography variant="normal_16px">
-              ${data.price}
+              ${data?.price}
             </Typography>
 
             <Typography variant={changesPrice}>
@@ -95,15 +95,15 @@ const MarketingBar = () => {
 
             <Typography variant={changesPrice}>
               {changesPercent}
-              {Math.abs(data.procent24Hour)}%
+              {Math.abs(data?.procent24Hour)}%
             </Typography>
 
             <Typography variant="normal_16px">
-              ${data.marketCap}
+              ${data?.marketCap}
             </Typography>
 
             <Typography variant="normal_16px">
-              ${data.volume24}
+              ${data?.volume24}
             </Typography>
 
             <Graph data={data.day7} color={graphColors[1 - Math.sign(data.procent7Day)]} />
