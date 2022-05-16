@@ -6,13 +6,13 @@ export const SLink = styled(Link)`
 `;
 
 export const LinkContent = styled.span`
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.textColor};
   letter-spacing: ${({ theme }) => theme.letterSpacing.default};
   font-size: ${({ theme }) => theme.fontSize.small};
   font-style: normal;
   font-weight: normal;
   text-decoration: none;
-  border-bottom: 2px solid #ffffffb5;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.textColor};
   padding: ${({ padding }) => padding};
   margin: ${({ margin }) => margin};
 `;
