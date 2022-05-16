@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import {
+  useContext, useLayoutEffect, useState,
+} from "react";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../api/coinapi";
+import { ErrorContext } from "../../services/errorContext";
 import FlexBox from "../CommonUI/FlexBox";
 import { prepareDateToGraphs } from "../Helpers/prepareDatatoGraphs";
-import { prepareLineChartDataHelper } from "../Helpers/prepareLineChartData";
 import SmallLineChart from "./lineChart";
 import MainGraph from "./mainGraph";
 import MarketingBar from "./marketingBar";
@@ -13,19 +15,31 @@ const MainContent = () => {
   const [data, setData] = useState([]);
   const [lineChartData, setLineChartData] = useState([]);
 
-  useEffect(() => {
-    BtcUsdPeriodOHLC(ValidPeriods.DAY).then((res) => {
-      const prepareData = prepareDateToGraphs(res);
-      setData(prepareData);
-    });
-    BtcUsdPeriodOHLC(ValidPeriods.MONTH).then((res) => {
-      const prepareLineChartData = prepareLineChartDataHelper(res);
-      setLineChartData(prepareLineChartData);
-    });
+  const { createNatification } = useContext(ErrorContext);
+
+  useLayoutEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [dayData, monthData] = await Promise.all([
+          BtcUsdPeriodOHLC(ValidPeriods.DAY),
+          BtcUsdPeriodOHLC(ValidPeriods.MONTH),
+        ]);
+
+        const prepareDataMainGraph = prepareDateToGraphs(dayData);
+        const prepareDataLineChart = prepareDateToGraphs(monthData);
+
+        setData(prepareDataMainGraph);
+        setLineChartData(prepareDataLineChart);
+      } catch (error) {
+        createNatification(error.message);
+      }
+    };
+    fetchData();
   }, []);
 
   return (
     <FlexBox width="100%" flexDirection="column" height="calc(100% - 6rem)" padding="0 1rem ">
+
       <FlexBox width="100%" justifyContent="space-between">
         <SmallLineChart data={lineChartData} />
       </FlexBox>

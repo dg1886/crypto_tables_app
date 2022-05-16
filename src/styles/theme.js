@@ -33,6 +33,7 @@ export const dark = {
     hoverButton: "#ae5467",
     userMenuBackground: "#838383",
     inherit: "inherit",
+    error: "#d9002e",
   },
   boxShadow: {
     primary: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
@@ -173,6 +174,7 @@ export const light = {
     hoverButton: "#ae5467",
     userMenuBackground: "#838383",
     inherit: "inherit",
+    error: "#d9002e",
   },
   boxShadow: {
     primary: "rgba(0, 0, 0, 0.24) 0px 3px 8px",

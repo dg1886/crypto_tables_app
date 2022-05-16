@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../api/coinapi";
+import { ErrorContext } from "../../../services/errorContext";
 import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
 import BnbIcon from "../../CommonUI/Icons/BnbIcon";
@@ -21,44 +22,72 @@ const coinNames = [
 
 const percentDirection = ["↓", "-", "↑"];
 
+const getPercents = (response) => {
+  return ((response[response.length - 1].close * 100) / response[0].open - 100
+  ).toFixed(2);
+};
+
+const getVolumeMaket = (response) => {
+  return (response.map((i) => i.volume).reduce((acc, cur) => acc + cur)).toFixed(4);
+};
+
 const MarketingBar = () => {
-  const [data, setData] = useState({ day7: [], hours24: [] });
+  const [data, setData] = useState(
+    {
+      day7: [],
+      hours24: [],
+      percent24Hour: "",
+      percent7Days: "",
+      volume24: "",
+      marketCap: "",
+      price: "",
+    },
+  );
   const { graphColors } = useTheme();
 
-  const changesPrice = (1 + Math.sign(data.procent7Day) ? "price_up" : "price_down");
-  const changesPercent = percentDirection[1 + Math.sign(data.procent7Day)];
+  const { createNatification } = useContext(ErrorContext);
 
   useEffect(() => {
     const fetchData = async () => {
-      let prepareDataHouhrs = "";
-      let prepareDataWeek = "";
-      let procent7Day = "";
-      let procent24Hour = "";
-      let volume24 = "";
-      let marketCap = "";
-      let price = "";
-      await BtcUsdPeriodOHLC(ValidPeriods.HOUR24).then((res) => {
-        prepareDataHouhrs = prepareDateToGraphs(res);
-        procent24Hour = (
-          (prepareDataHouhrs[prepareDataHouhrs.length - 1].close * 100) / prepareDataHouhrs[0].open - 100
-        ).toFixed(2);
-        volume24 = (prepareDataHouhrs.map((i) => i.volume).reduce((acc, cur) => acc + cur)).toFixed(4);
-        price = prepareDataHouhrs[0].open;
-      });
-      await BtcUsdPeriodOHLC(ValidPeriods.DAYS7).then((res) => {
-        prepareDataWeek = prepareDateToGraphs(res);
-        procent7Day = (
-          (prepareDataWeek[prepareDataWeek.length - 1].close * 100) / prepareDataWeek[0].open - 100
-        ).toFixed(2);
-        marketCap = (prepareDataWeek.map((i) => i.volume).reduce((acc, cur) => acc + cur)).toFixed(4);
-      });
-      setData({
-        hours24: prepareDataHouhrs, day7: prepareDataWeek, procent24Hour, procent7Day, volume24, marketCap, price,
-      });
+      try {
+        const [twentyFourHoursResponse, weekResponse] = await Promise.all(
+          [
+            BtcUsdPeriodOHLC(ValidPeriods.HOUR24),
+            BtcUsdPeriodOHLC(ValidPeriods.DAYS7),
+          ],
+        );
+
+        const prepareDataHouhrs = prepareDateToGraphs(twentyFourHoursResponse);
+        const prepareDataWeek = prepareDateToGraphs(weekResponse);
+
+        setData({
+          hours24: prepareDataHouhrs,
+          day7: prepareDataWeek,
+          percent24Hour: getPercents(prepareDataHouhrs),
+          percent7Days: getPercents(prepareDataWeek),
+          volume24: getVolumeMaket(prepareDataHouhrs),
+          marketCap: getVolumeMaket(prepareDataWeek),
+          price: prepareDataHouhrs[0].open,
+        });
+      } catch (error) {
+        createNatification(error.message);
+      }
     };
     fetchData();
   }, []);
 
+  const changesPrice = (1 + Math.sign(data.procent7Day) ? "price_up" : "price_down");
+  const changesPercent = percentDirection[1 + Math.sign(data.procent7Day)];
+
+  if (!data.day7.length) {
+    return (
+      <Marketing>
+        <Tittle><Typography variant="bold_16px">Marketing Values</Typography></Tittle>
+        <Border />
+        <Typography variant="bold_16px" margin="0 auto" padding="3rem 0">No Data</Typography>
+      </Marketing>
+    );
+  }
   return (
     <Marketing>
 
@@ -75,7 +104,7 @@ const MarketingBar = () => {
         <Typography variant="normal_16px">Last 7 Days</Typography>
       </Head>
 
-      {coinNames.map((item, index) => {
+      { coinNames.map((item, index) => {
         return (
           <Content backColor={index % 2 ? "background" : "backgroundItems"} key={item.name}>
 
@@ -90,12 +119,12 @@ const MarketingBar = () => {
 
             <Typography variant={changesPrice}>
               {changesPercent}
-              {Math.abs(data.procent7Day)}%
+              {Math.abs(data.percent7Days)}%
             </Typography>
 
             <Typography variant={changesPrice}>
               {changesPercent}
-              {Math.abs(data.procent24Hour)}%
+              {Math.abs(data.percent24Hour)}%
             </Typography>
 
             <Typography variant="normal_16px">
@@ -106,7 +135,7 @@ const MarketingBar = () => {
               ${data.volume24}
             </Typography>
 
-            <Graph data={data.day7} color={graphColors[1 - Math.sign(data.procent7Day)]} />
+            <Graph data={data.day7} color={graphColors[1 - Math.sign(data.percent7Days)]} />
 
           </Content>
 

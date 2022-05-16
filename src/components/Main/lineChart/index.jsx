@@ -26,6 +26,11 @@ const SmallLineChart = ({ data }) => {
   );
   const profitPercentHelper = profitPercent >= penultPercent ? lineChartColors[0] : lineChartColors[2];
 
+  if (!data.length) {
+    return (
+      lineCharts.map((item) => <LineChartWrapper color={lineChartColors[1]} key={item} />));
+  }
+
   return lineCharts.map((item) => {
     return (
       <LineChartWrapper color={lineChartColors[1]} key={item}>
