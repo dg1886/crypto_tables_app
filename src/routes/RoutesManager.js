@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 
-import Private from "../../hoc/Private";
-import LoginPage from "../../pages/LoginPage";
-import RegistrationPage from "../../pages/RegistrationPage";
-import Layout from "../Layout";
+import Layout from "../components/Layout";
+import Private from "../hoc/Private";
+import LoginPage from "../pages/LoginPage";
+import RegistrationPage from "../pages/RegistrationPage";
 
 const RoutesManager = () => {
   return (
@@ -19,6 +19,7 @@ const RoutesManager = () => {
           </Private>
         )}
       />
+
     </Routes>
   );
 };
