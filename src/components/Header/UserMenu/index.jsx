@@ -6,9 +6,13 @@ import {
   Action, H4, Li, Menu, OutsideBackground, Profile, Ul, UserLogout,
 } from "./styled";
 
-const UserMenu = () => {
+const UserMenu = ({ user }) => {
   const logout = useLogout("/login");
   const [isOpen, setIsOpen] = useState(false);
+  const { email } = user;
+  const userFirstLatter = user?.email.split("")[0].toUpperCase();
+  const mailIndex = email?.indexOf("@", 0);
+  const name = email?.slice(0, mailIndex);
 
   const toggleMenu = () => {
     setIsOpen((state) => !state);
@@ -17,13 +21,13 @@ const UserMenu = () => {
   return (
     <Action>
       <Profile onClick={toggleMenu}>
-        <Typography variant="user_name_tag">D</Typography>
+        <Typography variant="user_name_tag">{userFirstLatter}</Typography>
       </Profile>
 
       <Menu isOpen={isOpen}>
-        <H4>User Name</H4>
+        <H4>{name}</H4>
         <Ul>
-          <Li>userEmail@gmail.com</Li>
+          <Li>{email}</Li>
           <UserLogout onClick={logout}>Log out</UserLogout>
         </Ul>
       </Menu>

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
 import FlexBox from "../CommonUI/FlexBox";
@@ -9,6 +10,9 @@ import UserMenu from "./UserMenu";
 const Header = () => {
   const location = useLocation();
   const pathname = location.pathname.slice(1).toUpperCase();
+  const user = useMemo(() => {
+    return JSON.parse(localStorage.getItem("user"));
+  }, []);
 
   return (
     <FlexBox
@@ -23,7 +27,7 @@ const Header = () => {
       </PathnameContainer>
       <FlexBox>
         <Input margin="0.1rem 0.2rem 0.2rem 5rem" />
-        <UserMenu />
+        <UserMenu user={user} />
       </FlexBox>
 
     </FlexBox>
