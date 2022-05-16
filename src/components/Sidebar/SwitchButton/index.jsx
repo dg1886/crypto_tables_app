@@ -9,10 +9,10 @@ import { Option, Switcher, Wrapper } from "./styled";
 
 const SwitchButton = () => {
   const { colors } = useTheme();
-  const { setTheme, themeName } = useContext(ThemeContext);
+  const { changeTheme, themeName } = useContext(ThemeContext);
 
   const handleSetTheme = (theme) => {
-    setTheme(theme);
+    changeTheme(theme);
   };
 
   const isDarkTheme = themeName === DARK;
