@@ -18,17 +18,19 @@ const Header = () => {
     <FlexBox
       width="100%"
       height="6rem"
-      justifyContent="flex-start"
+      justifyContent="space-between"
       padding="0 2rem"
       zIndex="2"
+      maxWidth="1650px"
+      overFlow="unset"
     >
       <PathnameContainer>
         <Typography variant="bold_24px" userSelect="none" textTransform="capitalize">{pathname}</Typography>
       </PathnameContainer>
-      <FlexBox>
-        <Input margin="0.1rem 0.2rem 0.2rem 5rem" />
-        <UserMenu user={user} />
-      </FlexBox>
+
+      <Input margin="0.1rem 1rem 0.2rem 1rem" />
+      <FlexBox width="270px">{}</FlexBox>
+      <UserMenu user={user} />
 
     </FlexBox>
   );

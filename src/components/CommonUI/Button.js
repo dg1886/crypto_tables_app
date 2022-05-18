@@ -15,6 +15,7 @@ const Button = styled.button`
   overflow: hidden;
   z-index: 1;
   cursor: pointer;
+  border-radius: 0.313rem;
 
   ::before {
     display: block;
@@ -27,7 +28,6 @@ const Button = styled.button`
     content: "";
     z-index: -1;
     top: 0;
-    border-radius: 0.313rem;
   }
 
   :hover {

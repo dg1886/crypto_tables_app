@@ -1,17 +1,15 @@
 import styled from "styled-components";
 
 export const Action = styled.div`
-  position: fixed;
-  right: 3.75rem;
+  position: relative;
+  right: 1.75rem;
 `;
 
 export const Profile = styled.div`
-  position: relative;
   width: 3.75rem;
   height: 3.75rem;
   background-color: ${({ theme }) => theme.colors.textColor};
   border-radius: 50%;
-  overflow: hidden;
   cursor: pointer;
   display: flex;
   justify-content: center;
