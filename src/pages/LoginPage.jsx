@@ -7,84 +7,43 @@ import FlexBox from "../components/CommonUI/FlexBox";
 import Logo from "../components/CommonUI/Icons/Logo";
 import Input from "../components/CommonUI/Input";
 import StyledLink from "../components/CommonUI/StyledLink";
+import { validationsLogin } from "../components/Helpers/formValidation/validationsForForm";
 import Modal from "../components/Modal";
 import Typography from "../components/Typography";
+import useForm from "../hooks/useForm";
 
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const [showModal, setShowModal] = useState(false);
+  const [isModalActive, setIsModalActive] = useState(false);
 
-  const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState({
-    email: "",
-    password: "",
-  });
-
-  const onChange = (e) => {
-    const { name, value } = e.target;
-    setInputs((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    const emailRegexp = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
-    const passwordRegexp = /[^A-Z-a-z-0-9]/g;
-    setErrors((prev) => {
-      const stateObj = {
-        ...prev,
-        [name]: "",
-      };
-
-      switch (name) {
-        case "email":
-          if (!value) {
-            stateObj[name] = "Please enter Email.";
-          } else if (!emailRegexp.test(String(value).toLowerCase())) {
-            stateObj[name] = "Invalid email. Please check!";
-          }
-          break;
-
-        case "password":
-          if (!value) {
-            stateObj[name] = "Please enter Password.";
-          } else if (passwordRegexp.test(String(value).toLowerCase())) {
-            stateObj[name] = "Only latin letters and numbers";
-          } else if (value.length < 3 || value.length > 10) {
-            stateObj[name] = "No less than 3 and more than 10 characters";
-          }
-          break;
-
-        default:
-          break;
-      }
-      return stateObj;
-    });
+  const initialFormState = {
+    email: "", password: "",
   };
 
   const onSubmit = () => {
     const storedUsers = JSON.parse(localStorage.getItem("users"));
     const users = Array.isArray(storedUsers) ? storedUsers : [];
     const checkUser = [...users, ...MocUsers].find(
-      (item) => item.email === inputs.email,
+      (item) => item.password === values.password && item.email === values.email,
     );
-    if (checkUser?.password === inputs.password) {
+    if (isValid && !!checkUser) {
       navigate("/dashboard");
       localStorage.setItem(
         "user",
         JSON.stringify({
-          email: inputs.email,
+          email: values.email,
           role: checkUser.role,
         }),
       );
     }
-    if (checkUser?.password !== inputs.password) {
-      setShowModal(true);
-    }
+
+    setIsModalActive(true);
   };
+
+  const {
+    values, errors, isValid, changeHandler, submitHandler, touched,
+  } = useForm(initialFormState, validationsLogin, onSubmit);
 
   return (
     <FlexBox
@@ -92,8 +51,18 @@ const LoginPage = () => {
       width="100%"
       flexDirection="column"
       backColor="secondary"
-
     >
+
+      {isModalActive && (
+      <Modal
+        active={isModalActive}
+        hideModal={() => setIsModalActive(false)}
+        title="Email or Password is Wrong!"
+      >
+        Please try again
+      </Modal>
+      )}
+
       <FlexBox
         width="50%"
         height="60%"
@@ -114,35 +83,29 @@ const LoginPage = () => {
             <Input
               name="email"
               type="email"
-              onChange={onChange}
-              value={inputs.email}
+              onChange={changeHandler}
+              value={values.email}
               placeholder="Email"
             />
-            <Typography variant="form_validation">{errors.email && errors.email}</Typography>
+            <Typography variant="form_validation">{touched.email && errors.email}</Typography>
           </FlexBox>
 
           <FlexBox flexDirection="column" width="100%">
             <Input
               name="password"
               type="password"
-              onChange={onChange}
-              value={inputs.password}
+              onChange={changeHandler}
+              value={values.password}
               placeholder="Password"
             />
-            <Typography variant="form_validation">{errors.password && errors.password}</Typography>
+            <Typography variant="form_validation">{touched.password && errors.password}</Typography>
           </FlexBox>
 
         </FlexBox>
-        <Button onClick={onSubmit}>Submit</Button>
-        <StyledLink href="/registration" content="or register" padding="1.25rem 0 0.313rem 0" />
+        <Button onClick={submitHandler} disabled={!isValid || Object.keys(touched).length === 0}>Submit</Button>
+        <StyledLink href="/registration" content="or register" padding="1.25rem 0 0.3rem 0" />
       </FlexBox>
 
-      <Modal
-        active={showModal}
-        hideModal={() => setShowModal(false)}
-        title="Registration failed"
-      >Please try again
-      </Modal>;
     </FlexBox>
   );
 };

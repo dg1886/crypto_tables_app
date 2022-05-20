@@ -7,9 +7,9 @@ import renderGraph from "../../Helpers/renderGraph";
 import Typography from "../../Typography";
 import JapanCandles from "./d3Candle";
 import BarChart from "./d3Chart";
-import Container, { BarGraph, Graph } from "./Graph";
 import InfoBlock from "./InfoBlock";
 import Periods from "./periodButons";
+import Container, { BarGraph, Graph } from "./style";
 
 const MainGraph = ({ data, setData }) => {
   const [period, setPeriod] = useState(ValidPeriods.DAY);

@@ -1,5 +1,5 @@
 import {
-  useContext, useLayoutEffect, useState,
+  useContext, useEffect, useState,
 } from "react";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../api/coinapi";
@@ -17,7 +17,7 @@ const MainContent = () => {
 
   const { createNatification } = useContext(ErrorContext);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
         const [dayData, monthData] = await Promise.all([

@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, {
+  useContext, useLayoutEffect, useState,
+} from "react";
 import { useTheme } from "styled-components";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../api/coinapi";
@@ -12,7 +14,7 @@ import Typography from "../../Typography";
 import Graph from "./Graph";
 import Marketing, {
   Border, Content, Head, Tittle,
-} from "./MarketingBar";
+} from "./style";
 
 const coinNames = [
   { name: "bitcoin", icon: <BitcoinIcon /> },
@@ -47,7 +49,7 @@ const MarketingBar = () => {
 
   const { createNatification } = useContext(ErrorContext);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const fetchData = async () => {
       try {
         const [twentyFourHoursResponse, weekResponse] = await Promise.all(
@@ -76,8 +78,8 @@ const MarketingBar = () => {
     fetchData();
   }, []);
 
-  const changesPrice = (1 + Math.sign(data.procent7Day) ? "price_up" : "price_down");
-  const changesPercent = percentDirection[1 + Math.sign(data.procent7Day)];
+  const changesPrice = (1 + Math.sign(data.percent7Days) ? "price_up" : "price_down");
+  const changesPercent = percentDirection[1 + Math.sign(data.percent7Days)];
 
   if (!data.day7.length) {
     return (
