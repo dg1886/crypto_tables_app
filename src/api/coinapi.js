@@ -1,11 +1,6 @@
 import axios from "axios";
 import dayjs from "dayjs";
 
-const instance = axios.create({
-  baseURL: "https://rest.coinapi.io/v1",
-  headers: { "X-CoinAPI-Key": `${process.env.REACT_APP_API_KEY10}` },
-});
-
 export const ValidPeriods = {
   YEAR: "1YRS",
   MONTH: "1MTH",
@@ -25,6 +20,10 @@ const TimeInPeriods = {
 };
 
 const BtcUsdPeriodOHLC = async (period) => {
+  const instance = axios.create({
+    baseURL: "https://rest.coinapi.io/v1",
+    headers: { "X-CoinAPI-Key": `${process.env.REACT_APP_API_KEY5}` },
+  });
   const time = dayjs().subtract(...(TimeInPeriods[period] || TimeInPeriods[ValidPeriods.DAY])).toISOString();
   const gerRes = await instance.get(
     `/ohlcv/BITSTAMP_SPOT_BTC_USD/history?period_id=${period}&time_start=${time}&limit=500`,
