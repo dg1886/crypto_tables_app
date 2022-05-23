@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Market from "../../pages/Market";
 import Messages from "../../pages/Messages";
@@ -25,6 +25,7 @@ const Layout = () => {
           <Header />
 
           <Routes>
+            <Route path="*" element={<Navigate to="/dashboard" />} />
             <Route path="dashboard" element={<MainContent />} />
             <Route path="wallet" element={<Wallet />} />
             <Route path="market" element={<Market />} />
