@@ -1,0 +1,13 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    version="1"
+    viewBox="0 0 870 550"
+    >
+    <path
+    fill="#f5f5f5"    
+    d="M3700 4450v-950h500v1900h-500v-950zM1300 2750v-250h1900v500H1300v-250zM4700 2750v-250h1900v500H4700v-250zM3700 1050V100h500v1900h-500v-950z"
+    transform="matrix(.1 0 0 -.1 0 550)"
+    ></path>
+</svg>
