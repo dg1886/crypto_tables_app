@@ -8,7 +8,7 @@ import PolkadotIcon from "../../CommonUI/Icons/Polkadot";
 import SolanaIcon from "../../CommonUI/Icons/Solana";
 import EthereumIcon from "../../CommonUI/Icons/UsdcIcon";
 import Typography from "../../Typography";
-import Transaction, { Border, Content, Tittle } from "./TransactionBar";
+import Transaction, { Border, Content, Tittle } from "./style";
 
 const coinNames = [
   { name: "bitcoin", icon: <BitcoinIcon />, info: "Buy" },

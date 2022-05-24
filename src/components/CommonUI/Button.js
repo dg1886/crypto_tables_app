@@ -15,7 +15,7 @@ const Button = styled.button`
   overflow: hidden;
   z-index: 1;
   cursor: pointer;
-  border-radius: 0.313rem;
+  border-radius: 0.3rem;
 
   ::before {
     display: block;
@@ -41,6 +41,7 @@ const Button = styled.button`
   :active {
     ::before {
       transform: scale(0.97);
+      border-radius: 0.3rem;
     }
   }
 `;
