@@ -1,6 +1,6 @@
 {
-  "name": "crypto-tables-app",
-  "homepage": "https://dg1886.github.io/crypto-tables-app",
+  "name": "crypto_tables_app",
+  "homepage": "https://dg1886.github.io/crypto_tables_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
