@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/crypto_tables_app/static/css/main.74d60e5c.css",
-    "main.js": "/crypto_tables_app/static/js/main.74fa6fd7.js",
+    "main.js": "/crypto_tables_app/static/js/main.9541ceaf.js",
     "static/media/Gilroy-Light.eot": "/crypto_tables_app/static/media/Gilroy-Light.f498309f9a88b0a4402b.eot",
     "static/media/Gilroy-Medium.eot": "/crypto_tables_app/static/media/Gilroy-Medium.2fea647f59b209f411b1.eot",
     "static/media/Gilroy-Light.ttf": "/crypto_tables_app/static/media/Gilroy-Light.0ac7c2f9cb59ea1ba11c.ttf",
@@ -26,10 +26,10 @@
     "index.html": "/crypto_tables_app/index.html",
     "static/media/cursor.svg": "/crypto_tables_app/static/media/cursor.a28877533dc0d227777127113f4fc32f.svg",
     "main.74d60e5c.css.map": "/crypto_tables_app/static/css/main.74d60e5c.css.map",
-    "main.74fa6fd7.js.map": "/crypto_tables_app/static/js/main.74fa6fd7.js.map"
+    "main.9541ceaf.js.map": "/crypto_tables_app/static/js/main.9541ceaf.js.map"
   },
   "entrypoints": [
     "static/css/main.74d60e5c.css",
-    "static/js/main.74fa6fd7.js"
+    "static/js/main.9541ceaf.js"
   ]
 }
