@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Install and build
-        run: npm install && npm run build
+        run: yarn && yarn build
         env:
           REACT_APP_API_KEY4: ${{ secrets.REACT_APP_API_KEY4}}
           CI: ''
