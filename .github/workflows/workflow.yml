@@ -20,9 +20,8 @@ jobs:
       - name: Install and build
         run: yarn && yarn build
         env:
+          REACT_APP_API_KEY4: ${{ secrets.REACT_APP_API_KEY4}}
           CI: ''
-          development:
-            ${{secrets.REACT_APP_API_KEY4}}
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
