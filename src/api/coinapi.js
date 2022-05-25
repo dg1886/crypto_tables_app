@@ -1,9 +1,8 @@
 import axios from "axios";
 import dayjs from "dayjs";
 
-const apiKey = process.env.REACT_APP_API_KEY4;
-console.log(apiKey);
-console.log(process.env);
+const apiKey = process.env.REACT_APP_API_KEY5;
+
 export const ValidPeriods = {
   YEAR: "1YRS",
   MONTH: "1MTH",
