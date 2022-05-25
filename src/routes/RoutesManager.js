@@ -7,7 +7,7 @@ import RegistrationPage from "../pages/RegistrationPage";
 
 const RoutesManager = () => {
   return (
-    <Routes basename="/crypto_tables_app">
+    <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registration" element={<RegistrationPage />} />
 
