@@ -1,4 +1,4 @@
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 import RoutesManager from "./routes/RoutesManager";
 import NatificationProvider from "./services/errorContext";
@@ -8,9 +8,9 @@ function App() {
   return (
     <ThemeContextProvider>
       <NatificationProvider>
-        <BrowserRouter>
+        <HashRouter>
           <RoutesManager />
-        </BrowserRouter>
+        </HashRouter>
       </NatificationProvider>
     </ThemeContextProvider>
   );
