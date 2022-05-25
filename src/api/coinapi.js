@@ -1,6 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 
+const apiKey = process.env.REACT_APP_API_KEY4;
 export const ValidPeriods = {
   YEAR: "1YRS",
   MONTH: "1MTH",
@@ -22,7 +23,7 @@ const TimeInPeriods = {
 const BtcUsdPeriodOHLC = async (period) => {
   const instance = axios.create({
     baseURL: "https://rest.coinapi.io/v1",
-    headers: { "X-CoinAPI-Key": `${process.env.REACT_APP_API_KEY4}` },
+    headers: { "X-CoinAPI-Key": `${apiKey}` },
   });
   const time = dayjs().subtract(...(TimeInPeriods[period] || TimeInPeriods[ValidPeriods.DAY])).toISOString();
   const gerRes = await instance.get(
