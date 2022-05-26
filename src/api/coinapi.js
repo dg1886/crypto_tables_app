@@ -1,8 +1,6 @@
 import axios from "axios";
 import dayjs from "dayjs";
 
-const apiKey = process.env.REACT_APP_API_KEY5;
-
 export const ValidPeriods = {
   YEAR: "1YRS",
   MONTH: "1MTH",
@@ -21,7 +19,7 @@ const TimeInPeriods = {
   [ValidPeriods.DAYS7]: [28, "day"],
 };
 
-const BtcUsdPeriodOHLC = async (period) => {
+const BtcUsdPeriodOHLC = async (period, apiKey) => {
   const instance = axios.create({
     baseURL: "https://rest.coinapi.io/v1",
     headers: { "X-CoinAPI-Key": `${apiKey}` },
