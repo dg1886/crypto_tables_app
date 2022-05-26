@@ -2,6 +2,7 @@ import FlexBox from "../CommonUI/FlexBox";
 import Logo from "../CommonUI/Icons/Logo";
 import NavigationTabs from "../NavigationTabs";
 import Typography from "../Typography";
+import ApiKeyGenerator from "./ApiKeyGenerator";
 import LogoutButton from "./LogoutButton";
 import SwitchButton from "./SwitchButton";
 
@@ -23,6 +24,7 @@ const Navigation = () => {
       </div>
 
       <FlexBox width="100%" flexDirection="column" alignItems="center">
+        <ApiKeyGenerator />
         <SwitchButton margin="5rem 0 0 0.4rem" />
         <LogoutButton />
       </FlexBox>

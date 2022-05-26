@@ -1,10 +1,9 @@
-import React, {
-  useContext, useLayoutEffect, useState,
-} from "react";
+import React, { useContext, useLayoutEffect, useState } from "react";
 import { useTheme } from "styled-components";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../api/coinapi";
 import { ErrorContext } from "../../../services/errorContext";
+import { KeysContext } from "../../../services/keyContext";
 import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
 import BnbIcon from "../../CommonUI/Icons/BnbIcon";
@@ -48,14 +47,15 @@ const MarketingBar = () => {
   const { graphColors } = useTheme();
 
   const { createNatification } = useContext(ErrorContext);
+  const { apiKey } = useContext(KeysContext);
 
   useLayoutEffect(() => {
     const fetchData = async () => {
       try {
         const [twentyFourHoursResponse, weekResponse] = await Promise.all(
           [
-            BtcUsdPeriodOHLC(ValidPeriods.HOUR24),
-            BtcUsdPeriodOHLC(ValidPeriods.DAYS7),
+            BtcUsdPeriodOHLC(ValidPeriods.HOUR24, apiKey),
+            BtcUsdPeriodOHLC(ValidPeriods.DAYS7, apiKey),
           ],
         );
 
@@ -76,7 +76,7 @@ const MarketingBar = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [apiKey]);
 
   const changesPrice = (1 + Math.sign(data.percent7Days) ? "price_up" : "price_down");
   const changesPercent = percentDirection[1 + Math.sign(data.percent7Days)];
@@ -106,7 +106,7 @@ const MarketingBar = () => {
         <Typography variant="normal_16px">Last 7 Days</Typography>
       </Head>
 
-      { coinNames.map((item, index) => {
+      {coinNames.map((item, index) => {
         return (
           <Content backColor={index % 2 ? "background" : "backgroundItems"} key={item.name}>
 

@@ -1,9 +1,8 @@
-import {
-  useContext, useEffect, useState,
-} from "react";
+import { useContext, useEffect, useState } from "react";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../api/coinapi";
 import { ErrorContext } from "../../services/errorContext";
+import { KeysContext } from "../../services/keyContext";
 import FlexBox from "../CommonUI/FlexBox";
 import { prepareDateToGraphs } from "../Helpers/prepareDatatoGraphs";
 import SmallLineChart from "./lineChart";
@@ -16,13 +15,14 @@ const MainContent = () => {
   const [lineChartData, setLineChartData] = useState([]);
 
   const { createNatification } = useContext(ErrorContext);
+  const { apiKey } = useContext(KeysContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [dayData, monthData] = await Promise.all([
-          BtcUsdPeriodOHLC(ValidPeriods.DAY),
-          BtcUsdPeriodOHLC(ValidPeriods.MONTH),
+          BtcUsdPeriodOHLC(ValidPeriods.DAY, apiKey),
+          BtcUsdPeriodOHLC(ValidPeriods.MONTH, apiKey),
         ]);
 
         const prepareDataMainGraph = prepareDateToGraphs(dayData);
@@ -35,7 +35,7 @@ const MainContent = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [apiKey]);
 
   return (
     <FlexBox
