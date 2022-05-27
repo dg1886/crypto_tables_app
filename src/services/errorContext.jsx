@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid/non-secure";
 import {
   createContext, useCallback, useMemo, useState,
 } from "react";
@@ -12,7 +13,7 @@ const NatificationProvider = ({ children }) => {
 
   const createNatification = useCallback((message) => {
     setNatification((notifications) => {
-      return [{ message, id: notifications.length }, ...notifications];
+      return [{ message, id: nanoid() }, ...notifications];
     });
   }, []);
 
