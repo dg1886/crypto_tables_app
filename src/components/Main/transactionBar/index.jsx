@@ -1,12 +1,16 @@
 import dayjs from "dayjs";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 
+import { BtcUsdOHLCRequest, ValidPeriods } from "../../../api/coinapi";
+import { ErrorContext } from "../../../services/errorContext";
+import { KeysContext } from "../../../services/keyContext";
 import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
 import CardanoIcon from "../../CommonUI/Icons/Cardano";
 import PolkadotIcon from "../../CommonUI/Icons/Polkadot";
 import SolanaIcon from "../../CommonUI/Icons/Solana";
 import EthereumIcon from "../../CommonUI/Icons/UsdcIcon";
+import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
 import Typography from "../../Typography";
 import Transaction, { Border, Content, Tittle } from "./style";
 
@@ -18,7 +22,23 @@ const coinNames = [
   { name: "solana", icon: <SolanaIcon />, info: "Sell" },
 ];
 
-const TransactionBar = ({ data }) => {
+const TransactionBar = () => {
+  const [data, setData] = useState([]);
+  const { createNatification } = useContext(ErrorContext);
+  const { mainApiKey } = useContext(KeysContext);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const TransactionRequest = await BtcUsdOHLCRequest(ValidPeriods.MONTH, mainApiKey);
+        const prepareData = prepareDateToGraphs(TransactionRequest);
+        setData(prepareData);
+      } catch (error) {
+        createNatification(error.message);
+      }
+    };
+    fetchData();
+  }, [mainApiKey]);
   return (
     <Transaction>
       <Tittle>

@@ -5,20 +5,26 @@ import {
 export const KeysContext = createContext(null);
 
 const KeysContextProvider = ({ children }) => {
-  const [apiKey, setApiKey] = useState(process.env.REACT_APP_API_KEY1);
+  const [mainApiKey, setMainApiKey] = useState(process.env.REACT_APP_API_KEY1);
+  const [lineChartApiKey, setLineChartApiKey] = useState(process.env.REACT_APP_API_KEY2);
+  const [marketingApiKey, setMarketingApiKey] = useState(process.env.REACT_APP_API_KEY3);
 
   const keys = Object.values(process.env);
+  const lengthKeys = keys.length;
 
   const randomApiKeys = useCallback(() => {
-    const lengthKeys = keys.length;
-    const randomKey = keys[Math.floor(Math.random() * lengthKeys)];
-    setApiKey(randomKey);
+    const randomKey = () => keys[Math.floor(Math.random() * lengthKeys)];
+    setMainApiKey(randomKey());
+    setLineChartApiKey(randomKey());
+    setMarketingApiKey(randomKey());
   }, [keys]);
 
   const contextValue = useMemo(() => ({
     randomApiKeys,
-    apiKey,
-  }), [apiKey, randomApiKeys]);
+    mainApiKey,
+    lineChartApiKey,
+    marketingApiKey,
+  }), [mainApiKey, lineChartApiKey, marketingApiKey, randomApiKeys]);
   return (
     <KeysContext.Provider value={contextValue}>
       {children}

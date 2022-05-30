@@ -8,7 +8,7 @@ function LineChart(data, {
   marginRight = -18, // right margin, in pixels
   marginBottom = 15, // bottom margin, in pixels
   marginLeft = -18, // left margin, in pixels
-  width = 320, // outer width, in pixels
+  width = 420, // outer width, in pixels
   height = 115, // outer height, in pixels
   xRange = [marginLeft, width - marginRight], // [left, right]
   yRange = [height - marginBottom, marginTop], // [bottom, top]

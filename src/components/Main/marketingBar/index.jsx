@@ -1,7 +1,9 @@
-import React, { useContext, useLayoutEffect, useState } from "react";
+import React, {
+  useContext, useLayoutEffect, useState,
+} from "react";
 import { useTheme } from "styled-components";
 
-import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../api/coinapi";
+import { BtcUsdOHLCRequest, ValidPeriods } from "../../../api/coinapi";
 import { ErrorContext } from "../../../services/errorContext";
 import { KeysContext } from "../../../services/keyContext";
 import FlexBox from "../../CommonUI/FlexBox";
@@ -47,15 +49,15 @@ const MarketingBar = () => {
   const { graphColors } = useTheme();
 
   const { createNatification } = useContext(ErrorContext);
-  const { apiKey } = useContext(KeysContext);
+  const { marketingApiKey } = useContext(KeysContext);
 
   useLayoutEffect(() => {
     const fetchData = async () => {
       try {
         const [twentyFourHoursResponse, weekResponse] = await Promise.all(
           [
-            BtcUsdPeriodOHLC(ValidPeriods.HOUR24, apiKey),
-            BtcUsdPeriodOHLC(ValidPeriods.DAYS7, apiKey),
+            BtcUsdOHLCRequest(ValidPeriods.HOUR24, marketingApiKey),
+            BtcUsdOHLCRequest(ValidPeriods.DAYS7, marketingApiKey),
           ],
         );
 
@@ -76,7 +78,7 @@ const MarketingBar = () => {
       }
     };
     fetchData();
-  }, [apiKey]);
+  }, [marketingApiKey]);
 
   const changesPrice = (1 + Math.sign(data.percent7Days) ? "price_up" : "price_down");
   const changesPercent = percentDirection[1 + Math.sign(data.percent7Days)];
@@ -86,6 +88,15 @@ const MarketingBar = () => {
       <Marketing>
         <Tittle><Typography variant="bold_16px">Marketing Values</Typography></Tittle>
         <Border />
+        <Head>
+          <Typography variant="normal_16px">Name</Typography>
+          <Typography variant="normal_16px">Price</Typography>
+          <Typography variant="normal_16px">%7d</Typography>
+          <Typography variant="normal_16px">%24h</Typography>
+          <Typography variant="normal_16px">Market Cap</Typography>
+          <Typography variant="normal_16px">24h Volume</Typography>
+          <Typography variant="normal_16px">Last 7 Days</Typography>
+        </Head>
         <Typography variant="bold_16px" margin="0 auto" padding="3rem 0">No Data</Typography>
       </Marketing>
     );

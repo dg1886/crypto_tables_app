@@ -2,8 +2,8 @@ function ErrorIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="30"
-      height="30"
+      width="2rem"
+      height="2rem"
       viewBox="0 2 24 24"
     >
       <path

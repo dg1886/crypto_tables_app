@@ -23,4 +23,8 @@ export const GeneratorBtnWrapper = styled.div`
   :active {
     background: ${({ theme }) => theme.colors.background};
   }
+  @media (max-width: 450px) { 
+    width: 60%;
+    padding: 0 0.5rem;
+  }
 `;

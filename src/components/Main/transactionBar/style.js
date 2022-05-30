@@ -11,6 +11,9 @@ height: 28.125rem;
 padding-top: 1rem;
 box-sizing: border-box;
 border-radius: 0.625rem;
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 `;
 
 export default Transaction;

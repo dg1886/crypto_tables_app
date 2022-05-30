@@ -1,8 +1,10 @@
 import { useContext, useState } from "react";
 
-import BtcUsdPeriodOHLC, { ValidPeriods } from "../../../../api/coinapi";
+import { BtcUsdOHLCRequest, ValidPeriods } from "../../../../api/coinapi";
 import { ErrorContext } from "../../../../services/errorContext";
+import { KeysContext } from "../../../../services/keyContext";
 import { prepareDateToGraphs } from "../../../Helpers/prepareDatatoGraphs";
+import Typography from "../../../Typography";
 import PeriodButton from "./style";
 
 const buttons = [
@@ -14,12 +16,12 @@ const buttons = [
 
 const Periods = ({ setData, setPeriod }) => {
   const [activeButton, setActiveButton] = useState(ValidPeriods.DAY);
-
+  const { mainApiKey } = useContext(KeysContext);
   const { createNatification } = useContext(ErrorContext);
 
   const handlePeriod = async (item) => {
     try {
-      const data = await BtcUsdPeriodOHLC(item.value);
+      const data = await BtcUsdOHLCRequest(item.value, mainApiKey);
       const prepareDataMainGraph = prepareDateToGraphs(data);
       setData(prepareDataMainGraph);
       setActiveButton(item.value);
@@ -34,7 +36,7 @@ const Periods = ({ setData, setPeriod }) => {
 
     return (
       <PeriodButton isActive={isActive} key={item.text} onClick={() => handlePeriod(item)}>
-        {item.text}
+        <Typography variant={isActive ? "period_buttonActive" : "period_buttonNoActive"}>{item.text}</Typography>
       </PeriodButton>
     );
   });

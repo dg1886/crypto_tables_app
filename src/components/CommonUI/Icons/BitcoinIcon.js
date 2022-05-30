@@ -2,8 +2,8 @@ function BitcoinIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="25"
+      width="1.5rem"
+      height="1.5rem"
       viewBox="0 0 32 32"
     >
       <g fill="none" fillRule="evenodd">
