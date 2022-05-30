@@ -22,6 +22,7 @@ const Header = () => {
       padding="0 2rem"
       zIndex="2"
       maxWidth="1650px"
+      minWidth="70%"
       overFlow="unset"
     >
       <PathnameContainer>

@@ -44,7 +44,7 @@ const MainContent = () => {
       height="calc(100% - 6rem)"
       padding="0 1rem "
       maxWidth="103.1rem"
-      minWidth="54.7rem"
+      minWidth="70%"
     >
 
       <FlexBox width="100%" justifyContent="space-between">
