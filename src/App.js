@@ -1,5 +1,6 @@
 import { HashRouter } from "react-router-dom";
 
+import { GlobalStyle } from "./GlobalStyle";
 import RoutesManager from "./routes/RoutesManager";
 import NatificationProvider from "./services/errorContext";
 import KeysContextProvider from "./services/keyContext";
@@ -11,6 +12,7 @@ function App() {
       <NatificationProvider>
         <KeysContextProvider>
           <HashRouter>
+            <GlobalStyle />
             <RoutesManager />
           </HashRouter>
         </KeysContextProvider>
