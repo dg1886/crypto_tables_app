@@ -4,7 +4,7 @@ import {
 } from "react";
 
 import Error from "../components/Error";
-import Container from "../components/Error/style";
+import { Container } from "../components/Error/style";
 
 export const ErrorContext = createContext(null);
 

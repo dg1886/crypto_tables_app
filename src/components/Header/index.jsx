@@ -21,9 +21,7 @@ const Header = () => {
       justifyContent="space-between"
       padding="0 2rem"
       zIndex="2"
-      maxWidth="1650px"
-      minWidth="70%"
-      overFlow="unset"
+      overFlow="hidden"
     >
       <PathnameContainer>
         <Typography variant="bold_24px" userSelect="none" textTransform="capitalize">{pathname}</Typography>

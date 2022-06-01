@@ -13,6 +13,9 @@ margin-right: 1.5rem;
 box-sizing: border-box;
 border-radius: 1.25rem;
 position: relative;
+  @media (max-width: 450px) {
+    width: 100%;
+  }
 `;
 
 export default Container;
@@ -33,4 +36,16 @@ height: 90%;
 position: absolute;
 bottom: 0rem;
 z-index: 1;
+`;
+
+export const WrapperBarGraph = styled.div`
+display: flex;
+justify-content: space-between;
+background-color: transparent;
+width: 100%;
+padding: 1rem 0;
+box-sizing: border-box;
+@media (max-width: 450px) {
+    flex-direction: column;
+  }
 `;

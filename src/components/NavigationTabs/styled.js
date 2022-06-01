@@ -13,5 +13,11 @@ export const NavigationItemWrap = styled.div`
   margin-top: 0.5rem;
   padding-left: 1.6rem;
   box-sizing: border-box;
-
+  @media (max-width: 450px) {
+    padding: 0 1rem;
+    width: 60%;
+      span {
+        display: none;
+      }
+  }
 `;

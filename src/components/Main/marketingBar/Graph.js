@@ -11,7 +11,6 @@ const Graph = ({ data, color }) => {
       graph: MarketingGraph,
       data,
       options: {
-        yLabel: "↑ Daily close ($)",
         color,
       },
     });

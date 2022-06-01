@@ -9,7 +9,7 @@ export default function MarketingGraph(data, {
   y = (d) => d.close,
   curve = d3.curveMonotoneX, // method of interpolation between points
   width = 150, // outer width, in pixels
-  height = 40, // outer height, in pixels
+  height = 45, // outer height, in pixels
   xRange = [0, width], // [left, right]
   yRange = [30, 15], // [bottom, top]
   color = "white", // stroke color of line

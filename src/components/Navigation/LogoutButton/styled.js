@@ -23,4 +23,9 @@ export const LogoutBtnWrapper = styled.div`
   :active {
     background: ${({ theme }) => theme.colors.background};
   }
+  @media (max-width: 450px) { 
+    span {
+      display: none;
+    }
+  }
 `;
