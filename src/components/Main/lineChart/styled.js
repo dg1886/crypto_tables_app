@@ -16,6 +16,11 @@ export const LineChartWrapper = styled.div`
   &:last-child {
     margin-right: 0;
   }
+  @media (max-width: 450px) {
+    width: 49%;
+    height: 15rem;
+    margin: 0.5rem 0;
+  }
 `;
 
 export const InfoContainer = styled.div`

@@ -12,11 +12,11 @@ const MainContent = () => {
       flexDirection="column"
       justifyContent="flex-start"
       height="100%"
-      padding="0 1rem "
+      padding="0 1rem"
       maxWidth="150rem"
     >
 
-      <FlexBox width="100%" justifyContent="space-between">
+      <FlexBox width="100%" justifyContent="space-between" flexWrap="wrap">
         <SmallLineChart />
       </FlexBox>
 
