@@ -19,3 +19,20 @@ export const Container = styled.div`
 export const LogoTabsContainer = styled.div`
 width: 100%;
 `;
+
+export const LogoWrap = styled.div`
+  display: flex;
+  background-color: transparent;
+  justify-content: flex-start; 
+  align-items: center;  
+  width: 100%;
+  height: 6rem; 
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  @media (max-width: 450px) {     
+    span {
+      display: none;
+    }
+  }
+`;

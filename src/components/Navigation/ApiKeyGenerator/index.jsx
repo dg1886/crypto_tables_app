@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
 import { KeysContext } from "../../../services/keyContext";
-import Typography from "../../Typography";
+import Typography from "../../CommonUI/Typography";
 import { GeneratorBtnWrapper } from "./styled";
 
 const ApiKeyGenerator = () => {
