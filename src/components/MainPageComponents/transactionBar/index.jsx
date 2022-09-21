@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
 
-import { BtcUsdOHLCRequest, ValidPeriods } from "../../../api/coinapi";
 import { ErrorContext } from "../../../services/errorContext";
+import { InfoForGraphContext } from "../../../services/infoForGraphContext";
 import { KeysContext } from "../../../services/keyContext";
 import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
@@ -26,19 +26,19 @@ const TransactionBar = () => {
   const [data, setData] = useState([]);
   const { createNatification } = useContext(ErrorContext);
   const { mainApiKey } = useContext(KeysContext);
+  const { transactionRequest } = useContext(InfoForGraphContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const TransactionRequest = await BtcUsdOHLCRequest(ValidPeriods.MONTH, mainApiKey);
-        const prepareData = prepareDateToGraphs(TransactionRequest);
+        const prepareData = prepareDateToGraphs(transactionRequest);
         setData(prepareData);
       } catch (error) {
         createNatification(error.message);
       }
     };
     fetchData();
-  }, [mainApiKey, createNatification]);
+  }, [mainApiKey, createNatification, transactionRequest]);
   return (
     <Transaction>
       <Tittle>
@@ -57,9 +57,9 @@ const TransactionBar = () => {
 
               <FlexBox alignItems="flex-end" flexDirection="column">
                 <Typography variant="bold_16px">
-                  {data[0]?.close}$
+                  {data && data[0]?.close}$
                 </Typography>
-                <Typography variant="normal_14px">{dayjs(data[0]?.date).format("ddd, HH:mm A")}</Typography>
+                <Typography variant="normal_14px">{dayjs(data && data[0]?.date).format("ddd, HH:mm A")}</Typography>
               </FlexBox>
 
             </Content>

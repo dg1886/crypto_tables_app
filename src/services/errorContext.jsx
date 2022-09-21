@@ -9,26 +9,25 @@ import { Container } from "../components/Error/style";
 export const ErrorContext = createContext(null);
 
 const NatificationProvider = ({ children }) => {
-  const [natifications, setNatification] = useState([]);
+  const [notifications, setNotification] = useState([]);
 
-  const createNatification = useCallback((message) => {
-    setNatification((notifications) => {
-      return [{ message, id: nanoid() }, ...notifications];
+  const createNotification = useCallback((message) => {
+    setNotification((prevNotifications) => {
+      return [{ message, id: nanoid() }, ...prevNotifications];
     });
   }, []);
 
   const contextValue = useMemo(() => ({
-    createNatification,
-  }), [createNatification]);
+    createNatification: createNotification,
+  }), [createNotification]);
 
   const handleCloseNatification = (id) => {
-    setNatification((notifications) => notifications.filter((notification) => notification.id !== id));
+    setNotification((prevNotifications) => prevNotifications.filter((notification) => notification.id !== id));
   };
-
   return (
     <ErrorContext.Provider value={contextValue}>
       <Container>
-        {natifications.map(({ message, id }) => (
+        {notifications.map(({ message, id }) => (
           <Error
             message={message}
             onClose={() => handleCloseNatification(id)}
