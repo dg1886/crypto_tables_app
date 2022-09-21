@@ -44,7 +44,7 @@ const MarketingBar = () => {
       price: "",
     },
   );
-  const { graphColors } = useTheme();
+  const { colors } = useTheme();
 
   const { createNatification } = useContext(ErrorContext);
   const { apiKey } = useContext(KeysContext);
@@ -137,7 +137,7 @@ const MarketingBar = () => {
               ${data.volume24}
             </Typography>
 
-            <Graph data={data.day7} color={graphColors[1 - Math.sign(data.percent7Days)]} />
+            <Graph data={data.day7} color={colors.graphColors[1 - Math.sign(data.percent7Days)]} />
 
           </Content>
 
