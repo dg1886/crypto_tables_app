@@ -1,6 +1,4 @@
-import React, {
-  useContext, useEffect, useState,
-} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
 
 import { ErrorContext } from "../../../services/errorContext";
@@ -17,9 +15,18 @@ import Marketing, {
 } from "./style";
 
 const coinNames = [
-  { name: "bitcoin", icon: <BitcoinIcon /> },
-  { name: "ethereum", icon: <EthereumIcon /> },
-  { name: "bnb", icon: <BnbIcon /> },
+  {
+    name: "bitcoin",
+    icon: <BitcoinIcon />,
+  },
+  {
+    name: "ethereum",
+    icon: <EthereumIcon />,
+  },
+  {
+    name: "bnb",
+    icon: <BnbIcon />,
+  },
 ];
 
 const percentDirection = ["↓", "-", "↑"];
@@ -30,7 +37,8 @@ const getPercents = (response) => {
 };
 
 const getVolumeMaket = (response) => {
-  return (response.map((i) => i.volume).reduce((acc, cur) => acc + cur)).toFixed(4);
+  return (response.map((i) => i.volume)
+    .reduce((acc, cur) => acc + cur)).toFixed(4);
 };
 
 const MarketingBar = () => {
@@ -46,8 +54,11 @@ const MarketingBar = () => {
     },
   );
   const { graphColors } = useTheme();
-  const { createNatification } = useContext(ErrorContext);
-  const { marketingGraph, marketingNumbers } = useContext(InfoForGraphContext);
+  const { createNotification } = useContext(ErrorContext);
+  const {
+    marketingGraph,
+    marketingNumbers,
+  } = useContext(InfoForGraphContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,11 +76,11 @@ const MarketingBar = () => {
           price: prepareDataHouhrs[0].open,
         });
       } catch (error) {
-        createNatification(error.message);
+        createNotification(error.message);
       }
     };
     fetchData();
-  }, [marketingGraph, marketingNumbers, createNatification]);
+  }, [marketingGraph, marketingNumbers, createNotification]);
 
   const changesPrice = (1 + Math.sign(data.percent7Days) ? "price_up" : "price_down");
   const changesPercent = percentDirection[1 + Math.sign(data.percent7Days)];

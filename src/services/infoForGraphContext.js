@@ -1,18 +1,17 @@
 import {
   createContext, useCallback, useContext, useEffect, useState,
 } from "react";
+import { useRecoilValue } from "recoil";
 
 import { BtcUsdOHLCRequest, ValidPeriods } from "../api/coinapi";
+import { defaultApiKeyState } from "../state/atoms/apiKeysState";
 import { ErrorContext } from "./errorContext";
-import { KeysContext } from "./keyContext";
 
 export const InfoForGraphContext = createContext(null);
 
 const InfoForGraphContextProvider = ({ children }) => {
-  const {
-    randomKey,
-  } = useContext(KeysContext);
-  const { createNatification } = useContext(ErrorContext);
+  const apiKey = useRecoilValue(defaultApiKeyState);
+  const { createNotification } = useContext(ErrorContext);
   const [infoGraph, setInfoGraph] = useState({
     mainGraph: [],
     lineChartGraph: [],
@@ -21,11 +20,11 @@ const InfoForGraphContextProvider = ({ children }) => {
     marketingNumbers: [],
   });
 
-  const mainGraphsRequest = () => BtcUsdOHLCRequest(ValidPeriods.DAY, randomKey);
-  const lineChartRequest = () => BtcUsdOHLCRequest(ValidPeriods.MONTH, randomKey);
-  const transactionRequest = () => BtcUsdOHLCRequest(ValidPeriods.MONTH, randomKey);
-  const marketingGraphRequest = () => BtcUsdOHLCRequest(ValidPeriods.HOUR24, randomKey);
-  const marketingNumbersRequest = () => BtcUsdOHLCRequest(ValidPeriods.DAYS7, randomKey);
+  const mainGraphsRequest = () => BtcUsdOHLCRequest(ValidPeriods.DAY, apiKey);
+  const lineChartRequest = () => BtcUsdOHLCRequest(ValidPeriods.MONTH, apiKey);
+  const transactionRequest = () => BtcUsdOHLCRequest(ValidPeriods.MONTH, apiKey);
+  const marketingGraphRequest = () => BtcUsdOHLCRequest(ValidPeriods.HOUR24, apiKey);
+  const marketingNumbersRequest = () => BtcUsdOHLCRequest(ValidPeriods.DAYS7, apiKey);
 
   const arrayRequests = [
     mainGraphsRequest, lineChartRequest, transactionRequest, marketingGraphRequest, marketingNumbersRequest,
@@ -54,7 +53,7 @@ const InfoForGraphContextProvider = ({ children }) => {
         lineChartGraph,
         transactionGraph,
         marketingGraph,
-        marketingNumbers] = await synchronousRequst(arrayRequests, createNatification);
+        marketingNumbers] = await synchronousRequst(arrayRequests, createNotification);
       setInfoGraph({
         mainGraph,
         lineChartGraph,
@@ -64,7 +63,7 @@ const InfoForGraphContextProvider = ({ children }) => {
       });
     };
     fetch();
-  }, [randomKey]);
+  }, [apiKey]);
 
   return (
     <InfoForGraphContext.Provider value={infoGraph}>

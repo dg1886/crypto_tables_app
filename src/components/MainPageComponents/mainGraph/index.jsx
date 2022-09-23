@@ -1,12 +1,13 @@
 import {
   useContext, useEffect, useRef, useState,
 } from "react";
+import { useRecoilValue } from "recoil";
 import { useTheme } from "styled-components";
 
 import { ValidPeriods } from "../../../api/coinapi";
 import { ErrorContext } from "../../../services/errorContext";
 import { InfoForGraphContext } from "../../../services/infoForGraphContext";
-import { KeysContext } from "../../../services/keyContext";
+import { defaultApiKeyState } from "../../../state/atoms/apiKeysState";
 import FlexBox from "../../CommonUI/FlexBox";
 import Typography from "../../CommonUI/Typography";
 import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
@@ -28,9 +29,10 @@ const MainGraph = () => {
     ?.reduce((sum, item) => (sum + item.volume), 0))
     .toFixed(1);
 
-  const { createNatification } = useContext(ErrorContext);
-  const { mainApiKey } = useContext(KeysContext);
+  const { createNotification } = useContext(ErrorContext);
   const { mainGraph } = useContext(InfoForGraphContext);
+
+  const apiKey = useRecoilValue(defaultApiKeyState);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,11 +40,11 @@ const MainGraph = () => {
         const prepareDataMainGraph = prepareDateToGraphs(mainGraph);
         setData(prepareDataMainGraph);
       } catch (error) {
-        createNatification(error.message);
+        createNotification(error.message);
       }
     };
     fetchData();
-  }, [mainApiKey, mainGraph, createNatification]);
+  }, [apiKey, mainGraph, createNotification]);
 
   useEffect(() => {
     setFocusCandle(data[0]);
