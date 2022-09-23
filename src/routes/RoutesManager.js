@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import Private from "../hoc/Private";
-import LoginPage from "../pages/LoginPage";
-import RegistrationPage from "../pages/RegistrationPage";
+import LoginPage from "../pages/Login";
+import RegistrationPage from "../pages/Regestration";
 
 const RoutesManager = () => {
   return (

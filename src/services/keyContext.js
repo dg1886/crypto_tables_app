@@ -17,7 +17,7 @@ const KeysContextProvider = ({ children }) => {
     setMainApiKey(randomKey());
     setLineChartApiKey(randomKey());
     setMarketingApiKey(randomKey());
-  }, [keys]);
+  }, [keys, lengthKeys]);
 
   const contextValue = useMemo(() => ({
     randomApiKeys,

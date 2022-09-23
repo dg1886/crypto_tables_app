@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import ErrorIcon from "../CommonUI/Icons/Error";
-import Typography from "../Typography";
+import Typography from "../CommonUI/Typography";
 import { Message, TextWrapper } from "./style";
 
 const Error = ({ message, onClose, options = {} }) => {
