@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTheme } from "styled-components";
 
-import { BtcUsdOHLCRequest, ValidPeriods } from "../../../api/coinapi";
 import { ErrorContext } from "../../../services/errorContext";
+import { InfoForGraphContext } from "../../../services/infoForGraphContext";
 import { KeysContext } from "../../../services/keyContext";
 import LineChartArrows from "../../CommonUI/Icons/LineChartArrows";
 import Typography from "../../CommonUI/Typography";
@@ -19,19 +19,19 @@ const SmallLineChart = () => {
   const { lineChartColors } = useTheme();
   const { createNatification } = useContext(ErrorContext);
   const { lineChartApiKey } = useContext(KeysContext);
+  const { lineChartGraph } = useContext(InfoForGraphContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const lineChartRequest = await BtcUsdOHLCRequest(ValidPeriods.MONTH, lineChartApiKey);
-        const prepareDataLineChart = prepareDateToGraphs(lineChartRequest);
+        const prepareDataLineChart = prepareDateToGraphs(lineChartGraph);
         setData(prepareDataLineChart);
       } catch (error) {
         createNatification(error.message);
       }
     };
     fetchData();
-  }, [lineChartApiKey, createNatification]);
+  }, [lineChartApiKey, createNatification, lineChartGraph]);
 
   const firstPrice = data[0]?.close;
   const lastPrice = data[data.length - 1]?.close;

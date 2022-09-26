@@ -3,8 +3,9 @@ import {
 } from "react";
 import { useTheme } from "styled-components";
 
-import { BtcUsdOHLCRequest, ValidPeriods } from "../../../api/coinapi";
+import { ValidPeriods } from "../../../api/coinapi";
 import { ErrorContext } from "../../../services/errorContext";
+import { InfoForGraphContext } from "../../../services/infoForGraphContext";
 import { KeysContext } from "../../../services/keyContext";
 import FlexBox from "../../CommonUI/FlexBox";
 import Typography from "../../CommonUI/Typography";
@@ -29,19 +30,19 @@ const MainGraph = () => {
 
   const { createNatification } = useContext(ErrorContext);
   const { mainApiKey } = useContext(KeysContext);
+  const { mainGraph } = useContext(InfoForGraphContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const mainGraphsRequest = await BtcUsdOHLCRequest(period, mainApiKey);
-        const prepareDataMainGraph = prepareDateToGraphs(mainGraphsRequest);
+        const prepareDataMainGraph = prepareDateToGraphs(mainGraph);
         setData(prepareDataMainGraph);
       } catch (error) {
         createNatification(error.message);
       }
     };
     fetchData();
-  }, [mainApiKey, createNatification]);
+  }, [mainApiKey, mainGraph, createNatification]);
 
   useEffect(() => {
     setFocusCandle(data[0]);

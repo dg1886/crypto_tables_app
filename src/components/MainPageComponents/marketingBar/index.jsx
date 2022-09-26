@@ -1,11 +1,10 @@
 import React, {
-  useContext, useLayoutEffect, useState,
+  useContext, useEffect, useState,
 } from "react";
 import { useTheme } from "styled-components";
 
-import { BtcUsdOHLCRequest, ValidPeriods } from "../../../api/coinapi";
 import { ErrorContext } from "../../../services/errorContext";
-import { KeysContext } from "../../../services/keyContext";
+import { InfoForGraphContext } from "../../../services/infoForGraphContext";
 import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
 import BnbIcon from "../../CommonUI/Icons/BnbIcon";
@@ -37,8 +36,8 @@ const getVolumeMaket = (response) => {
 const MarketingBar = () => {
   const [data, setData] = useState(
     {
-      day7: [],
-      hours24: [],
+      weekData: [],
+      hours24Data: [],
       percent24Hour: "",
       percent7Days: "",
       volume24: "",
@@ -47,26 +46,18 @@ const MarketingBar = () => {
     },
   );
   const { graphColors } = useTheme();
-
   const { createNatification } = useContext(ErrorContext);
-  const { marketingApiKey } = useContext(KeysContext);
+  const { marketingGraph, marketingNumbers } = useContext(InfoForGraphContext);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const [twentyFourHoursResponse, weekResponse] = await Promise.all(
-          [
-            BtcUsdOHLCRequest(ValidPeriods.HOUR24, marketingApiKey),
-            BtcUsdOHLCRequest(ValidPeriods.DAYS7, marketingApiKey),
-          ],
-        );
-
-        const prepareDataHouhrs = prepareDateToGraphs(twentyFourHoursResponse);
-        const prepareDataWeek = prepareDateToGraphs(weekResponse);
+        const prepareDataHouhrs = prepareDateToGraphs(marketingGraph);
+        const prepareDataWeek = prepareDateToGraphs(marketingNumbers);
 
         setData({
-          hours24: prepareDataHouhrs,
-          day7: prepareDataWeek,
+          hours24Data: prepareDataHouhrs,
+          weekData: prepareDataWeek,
           percent24Hour: getPercents(prepareDataHouhrs),
           percent7Days: getPercents(prepareDataWeek),
           volume24: getVolumeMaket(prepareDataHouhrs),
@@ -78,12 +69,12 @@ const MarketingBar = () => {
       }
     };
     fetchData();
-  }, [marketingApiKey, createNatification]);
+  }, [marketingGraph, marketingNumbers, createNatification]);
 
   const changesPrice = (1 + Math.sign(data.percent7Days) ? "price_up" : "price_down");
   const changesPercent = percentDirection[1 + Math.sign(data.percent7Days)];
 
-  if (!data.day7.length) {
+  if (!data.weekData.length) {
     return (
       <Marketing>
         <Tittle><Typography variant="bold_16px">Marketing Values</Typography></Tittle>
@@ -147,9 +138,10 @@ const MarketingBar = () => {
                 ${data.volume24}
               </Typography>
 
-              <Graph data={data.day7} color={graphColors[1 - Math.sign(data.percent7Days)]} />
+              <Graph data={data.weekData} color={graphColors[1 - Math.sign(data.percent7Days)]} />
 
             </Content>
+
           </GridTableBody>
         );
       })}
