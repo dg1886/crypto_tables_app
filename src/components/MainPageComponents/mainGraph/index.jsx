@@ -37,7 +37,7 @@ const MainGraph = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const prepareDataMainGraph = prepareDateToGraphs(mainGraph);
+        const prepareDataMainGraph = await prepareDateToGraphs(mainGraph);
         setData(prepareDataMainGraph);
       } catch (error) {
         createNotification(error.message);

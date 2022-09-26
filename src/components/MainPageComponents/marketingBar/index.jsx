@@ -63,8 +63,8 @@ const MarketingBar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const prepareDataHouhrs = prepareDateToGraphs(marketingGraph);
-        const prepareDataWeek = prepareDateToGraphs(marketingNumbers);
+        const prepareDataHouhrs = await prepareDateToGraphs(marketingGraph);
+        const prepareDataWeek = await prepareDateToGraphs(marketingNumbers);
 
         setData({
           hours24Data: prepareDataHouhrs,

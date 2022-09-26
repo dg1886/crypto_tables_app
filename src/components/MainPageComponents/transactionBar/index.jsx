@@ -53,7 +53,7 @@ const TransactionBar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const prepareData = prepareDateToGraphs(transactionRequest);
+        const prepareData = await prepareDateToGraphs(transactionRequest);
         setData(prepareData);
       } catch (error) {
         createNotification(error.message);

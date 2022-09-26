@@ -25,7 +25,7 @@ const SmallLineChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const prepareDataLineChart = prepareDateToGraphs(lineChartGraph);
+        const prepareDataLineChart = await prepareDateToGraphs(lineChartGraph);
         setData(prepareDataLineChart);
       } catch (error) {
         createNotification(error.message);
