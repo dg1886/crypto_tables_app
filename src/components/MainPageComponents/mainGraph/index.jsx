@@ -22,7 +22,7 @@ const MainGraph = () => {
   const [data, setData] = useState([]);
   const [period, setPeriod] = useState(ValidPeriods.DAY);
   const [focusCandle, setFocusCandle] = useState({});
-  const { graphColors } = useTheme();
+  const { colors } = useTheme();
   const mainGraphRef = useRef(null);
   const secondGraphRef = useRef(null);
   const allVolumeTrade = Math.round(data
@@ -56,7 +56,7 @@ const MainGraph = () => {
       options: {
         period,
         setFocusCandle,
-        colors: graphColors,
+        colors: colors.graphColors,
       },
     });
 
@@ -64,9 +64,9 @@ const MainGraph = () => {
       ref: secondGraphRef,
       graph: BarChart,
       data,
-      options: { colors: graphColors },
+      options: { colors: colors.graphColors },
     });
-  }, [data, graphColors, period]);
+  }, [data, colors.graphColors, period]);
 
   if (!data.length) {
     return (
