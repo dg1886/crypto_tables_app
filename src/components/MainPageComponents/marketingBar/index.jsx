@@ -119,8 +119,8 @@ const MarketingBar = () => {
 
       {coinNames.map((item) => {
         return (
-          <GridTableBody>
-            <Content key={item.name}>
+          <GridTableBody key={item.name}>
+            <Content>
 
               <FlexBox justifyContent="flex-start">
                 {item.icon}

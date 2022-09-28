@@ -1,10 +1,8 @@
 import dayjs from "dayjs";
 import React, { useContext, useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 
 import { ErrorContext } from "../../../services/errorContext";
 import { InfoForGraphContext } from "../../../services/infoForGraphContext";
-import { defaultApiKeyState } from "../../../state/atoms/apiKeysState";
 import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
 import CardanoIcon from "../../CommonUI/Icons/Cardano";
@@ -46,21 +44,19 @@ const coinNames = [
 const TransactionBar = () => {
   const [data, setData] = useState([]);
   const { createNotification } = useContext(ErrorContext);
-  const { transactionRequest } = useContext(InfoForGraphContext);
-
-  const apiKey = useRecoilValue(defaultApiKeyState);
+  const { transactionGraph } = useContext(InfoForGraphContext);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const prepareData = await prepareDateToGraphs(transactionRequest);
+        const prepareData = await prepareDateToGraphs(transactionGraph);
         setData(prepareData);
       } catch (error) {
         createNotification(error.message);
       }
     };
     fetchData();
-  }, [apiKey, createNotification, transactionRequest]);
+  }, [createNotification, transactionGraph]);
   return (
     <Transaction>
       <Tittle>
