@@ -17,7 +17,7 @@ const lineCharts = ["firstChart", "secondChart", "thirdChart", "fourthChart"];
 
 const SmallLineChart = () => {
   const [data, setData] = useState([]);
-  const { lineChartColors } = useTheme();
+  const { colors } = useTheme();
   const { createNotification } = useContext(ErrorContext);
   const { lineChartGraph } = useContext(InfoForGraphContext);
   const apiKey = useRecoilValue(defaultApiKeyState);
@@ -44,12 +44,12 @@ const SmallLineChart = () => {
   const penultPercent = (
     ((firstPrice * 100) / penultPrice - 100).toFixed(2)
   );
-  const profitPercentHelper = profitPercent >= penultPercent ? lineChartColors[0] : lineChartColors[2];
+  const profitPercentHelper = profitPercent >= penultPercent ? colors.lineChartColors[0] : colors.lineChartColors[2];
 
   if (!data.length) {
     return (
       lineCharts.map((item) => (
-        <LineChartWrapper color={lineChartColors[1]} key={item}>
+        <LineChartWrapper color={colors.lineChartColors[1]} key={item}>
           <InfoContainer>
             <CurrencyName>
               <Typography variant="normal_16px">BTC</Typography>
@@ -66,7 +66,7 @@ const SmallLineChart = () => {
 
   return lineCharts.map((item) => {
     return (
-      <LineChartWrapper color={lineChartColors[1]} key={item}>
+      <LineChartWrapper color={colors.lineChartColors[1]} key={item}>
         <InfoContainer>
           <CurrencyName>
             <Typography variant="normal_16px">BTC</Typography>
@@ -80,7 +80,7 @@ const SmallLineChart = () => {
         <PercentInfoContainer>
           <ChartText variant="normal_14px" color={profitPercentHelper}>+{profitPercent}%</ChartText>
         </PercentInfoContainer>
-        <LineChartHandler data={data} color={lineChartColors[profitPercent >= penultPercent ? 0 : 2]} />
+        <LineChartHandler data={data} color={colors.lineChartColors[profitPercent >= penultPercent ? 0 : 2]} />
       </LineChartWrapper>
     );
   });

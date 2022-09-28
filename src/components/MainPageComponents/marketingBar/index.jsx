@@ -53,7 +53,7 @@ const MarketingBar = () => {
       price: "",
     },
   );
-  const { graphColors } = useTheme();
+  const { colors } = useTheme();
   const { createNotification } = useContext(ErrorContext);
   const {
     marketingGraph,
@@ -149,7 +149,7 @@ const MarketingBar = () => {
                 ${data.volume24}
               </Typography>
 
-              <Graph data={data.weekData} color={graphColors[1 - Math.sign(data.percent7Days)]} />
+              <Graph data={data.weekData} color={colors.graphColors[1 - Math.sign(data.percent7Days)]} />
 
             </Content>
 
