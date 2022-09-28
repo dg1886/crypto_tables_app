@@ -1,21 +1,22 @@
 import { useContext, useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 import BtcUsdPeriodOHLC, { ValidPeriods } from "../../api/coinapi";
 import { ErrorContext } from "../../services/errorContext";
-import { KeysContext } from "../../services/keyContext";
+import { defaultApiKeyState } from "../../state/atoms/apiKeysState";
 import FlexBox from "../CommonUI/FlexBox";
 import { prepareDateToGraphs } from "../Helpers/prepareDatatoGraphs";
-import SmallLineChart from "./lineChart";
-import MainGraph from "./mainGraph";
-import MarketingBar from "./marketingBar";
-import TransactionBar from "./transactionBar";
+import SmallLineChart from "../MainPageComponents/lineChart";
+import MainGraph from "../MainPageComponents/mainGraph";
+import MarketingBar from "../MainPageComponents/marketingBar";
+import TransactionBar from "../MainPageComponents/transactionBar";
 
 const MainContent = () => {
   const [data, setData] = useState([]);
   const [lineChartData, setLineChartData] = useState([]);
 
-  const { createNatification } = useContext(ErrorContext);
-  const { apiKey } = useContext(KeysContext);
+  const { createNotification } = useContext(ErrorContext);
+  const apiKey = useRecoilValue(defaultApiKeyState);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +32,7 @@ const MainContent = () => {
         setData(prepareDataMainGraph);
         setLineChartData(prepareDataLineChart);
       } catch (error) {
-        createNatification(error.message);
+        createNotification(error.message);
       }
     };
     fetchData();

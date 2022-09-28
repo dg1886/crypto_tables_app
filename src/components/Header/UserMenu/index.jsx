@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { useLogout } from "../../../hooks/useLogout";
-import Typography from "../../Typography";
+import Typography from "../../CommonUI/Typography";
 import {
   Action, H4, Li, Menu, OutsideBackground, Profile, Ul, UserLogout,
 } from "./styled";
@@ -10,7 +10,7 @@ const UserMenu = ({ user }) => {
   const logout = useLogout("/login");
   const [isOpen, setIsOpen] = useState(false);
   const { email } = user;
-  const userFirstLatter = user?.email.split("")[0].toUpperCase();
+  const userFirstLatter = user?.email?.split("")[0].toUpperCase();
   const mailIndex = email?.indexOf("@", 0);
   const name = email?.slice(0, mailIndex);
 

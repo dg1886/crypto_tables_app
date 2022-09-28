@@ -2,7 +2,7 @@ function LineChartArrows() {
   const css = ".up { fill: #ae5467;} .down { fill: #29a5e9;}";
 
   return (
-    <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <svg width="1.5rem" height="1.5rem" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{css}</style>
       </defs>

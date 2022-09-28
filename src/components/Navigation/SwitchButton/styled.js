@@ -11,6 +11,10 @@ export const Wrapper = styled.div`
   height: 2.5rem;
   text-align: center;
   box-shadow: rgba(238, 234, 234, 0.02) 0px 1px 3px 0px, rgba(233, 239, 245, 0.15) 0px 0px 0px 1px;
+  @media (max-width: 450px) { 
+    margin: 3rem 0;
+    transform: rotate(90deg)
+  }
 `;
 
 export const Option = styled.div`

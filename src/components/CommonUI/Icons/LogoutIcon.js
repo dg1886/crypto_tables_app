@@ -2,8 +2,8 @@ function LogoutIcon({ fill }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="30"
-      height="30"
+      width="2rem"
+      height="2rem"
       viewBox="0 0 48 48"
     >
       <path fill="none" d="M0 0h48v48H0z" />

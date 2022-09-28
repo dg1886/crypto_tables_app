@@ -2,7 +2,7 @@ import { useTheme } from "styled-components";
 
 import { useLogout } from "../../../hooks/useLogout";
 import LogoutIcon from "../../CommonUI/Icons/LogoutIcon";
-import Typography from "../../Typography";
+import Typography from "../../CommonUI/Typography";
 import { LogoutBtnWrapper } from "./styled";
 
 const LogoutButton = () => {

@@ -1,4 +1,4 @@
-function Icon({ size = "24px", fill }) {
+function Icon({ size = "1.5rem", fill }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 512 512">
       <path
