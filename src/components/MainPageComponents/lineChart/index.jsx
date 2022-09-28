@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import { useTheme } from "styled-components";
 
 import { ErrorContext } from "../../../services/errorContext";
 import { InfoForGraphContext } from "../../../services/infoForGraphContext";
-import { KeysContext } from "../../../services/keyContext";
+import { defaultApiKeyState } from "../../../state/atoms/apiKeysState";
 import LineChartArrows from "../../CommonUI/Icons/LineChartArrows";
 import Typography from "../../CommonUI/Typography";
 import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
@@ -17,9 +18,9 @@ const lineCharts = ["firstChart", "secondChart", "thirdChart", "fourthChart"];
 const SmallLineChart = () => {
   const [data, setData] = useState([]);
   const { lineChartColors } = useTheme();
-  const { createNatification } = useContext(ErrorContext);
-  const { lineChartApiKey } = useContext(KeysContext);
+  const { createNotification } = useContext(ErrorContext);
   const { lineChartGraph } = useContext(InfoForGraphContext);
+  const apiKey = useRecoilValue(defaultApiKeyState);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,11 +28,11 @@ const SmallLineChart = () => {
         const prepareDataLineChart = prepareDateToGraphs(lineChartGraph);
         setData(prepareDataLineChart);
       } catch (error) {
-        createNatification(error.message);
+        createNotification(error.message);
       }
     };
     fetchData();
-  }, [lineChartApiKey, createNatification, lineChartGraph]);
+  }, [apiKey, createNotification, lineChartGraph]);
 
   const firstPrice = data[0]?.close;
   const lastPrice = data[data.length - 1]?.close;
