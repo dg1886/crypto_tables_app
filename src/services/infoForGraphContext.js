@@ -4,6 +4,7 @@ import {
 import { useRecoilValue } from "recoil";
 
 import { BtcUsdOHLCRequest, ValidPeriods } from "../api/coinapi";
+import { MOC } from "../mocData/moc";
 import { defaultApiKeyState } from "../state/atoms/apiKeysState";
 import { ErrorContext } from "./errorContext";
 
@@ -30,6 +31,8 @@ const InfoForGraphContextProvider = ({ children }) => {
     mainGraphsRequest, lineChartRequest, transactionRequest, marketingGraphRequest, marketingNumbersRequest,
   ];
 
+  const storageUseMoc = localStorage.getItem("useMoc");
+
   const synchronousRequst = useCallback(async (reqArr, onError) => {
     try {
       const [requestFunc, ...otherReq] = reqArr;
@@ -48,6 +51,16 @@ const InfoForGraphContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    if (storageUseMoc === "true") {
+      setInfoGraph({
+        mainGraph: MOC.mainGraph,
+        lineChartGraph: MOC.lineChartGraph,
+        transactionGraph: MOC.transactionGraph,
+        marketingGraph: MOC.marketingGraph,
+        marketingNumbers: MOC.marketingNumbers,
+      });
+      return;
+    }
     const fetch = async () => {
       const [mainGraph,
         lineChartGraph,
@@ -63,7 +76,7 @@ const InfoForGraphContextProvider = ({ children }) => {
       });
     };
     fetch();
-  }, [apiKey]);
+  }, [storageUseMoc, apiKey]);
 
   return (
     <InfoForGraphContext.Provider value={infoGraph}>
