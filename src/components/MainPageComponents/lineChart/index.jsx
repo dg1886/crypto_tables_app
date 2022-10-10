@@ -13,7 +13,7 @@ import {
   ChartText, CurrencyName, InfoContainer, LineChartWrapper, PercentInfoContainer,
 } from "./styled";
 
-const lineCharts = ["firstChart", "secondChart", "thirdChart", "fourthChart"];
+export const lineCharts = ["firstChart", "secondChart", "thirdChart", "fourthChart"];
 
 const SmallLineChart = () => {
   const [data, setData] = useState([]);

@@ -3,7 +3,8 @@
     "react-app",
     "airbnb",
     "plugin:jsx-a11y/recommended",
-    "react-app/jest"
+    "react-app/jest",
+    "plugin:testing-library/react"
   ],
   "plugins": [
     "jsx-a11y",
