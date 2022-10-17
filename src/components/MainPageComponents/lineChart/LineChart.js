@@ -23,8 +23,12 @@ function LineChart(data, {
   const yDomain = [d3.min(Y), d3.max(Y)]; // [ymin, ymax]
 
   // Construct scales and axes.
-  const xScale = d3.scaleTime().domain(xDomain).range(xRange);
-  const yScale = d3.scaleLinear().domain(yDomain).range(yRange);
+  const xScale = d3.scaleTime()
+    .domain(xDomain)
+    .range(xRange);
+  const yScale = d3.scaleLinear()
+    .domain(yDomain)
+    .range(yRange);
 
   // Construct an area generator.
   const line = d3.area()
