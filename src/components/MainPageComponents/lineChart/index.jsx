@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import React, { useContext, useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useTheme } from "styled-components";
 
 import { ErrorContext } from "../../../services/errorContext";
-import { InfoForGraphContext } from "../../../services/infoForGraphContext";
 import { defaultApiKeyState } from "../../../state/atoms/apiKeysState";
+import { lineChartState } from "../../../state/atoms/infoGraphState";
+// import { apiKeysSelector } from "../../../state/selectors/apiKeysSelectors";
 import LineChartArrows from "../../CommonUI/Icons/LineChartArrows";
 import Typography from "../../CommonUI/Typography";
-import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
 import LineChartHandler from "./LineChartHandler";
 import {
   ChartText, CurrencyName, InfoContainer, LineChartWrapper, PercentInfoContainer,
@@ -16,23 +16,17 @@ import {
 const lineCharts = ["firstChart", "secondChart", "thirdChart", "fourthChart"];
 
 const SmallLineChart = () => {
-  const [data, setData] = useState([]);
   const { colors } = useTheme();
   const { createNotification } = useContext(ErrorContext);
-  const { lineChartGraph } = useContext(InfoForGraphContext);
   const apiKey = useRecoilValue(defaultApiKeyState);
+  const [data, setData] = useRecoilState(lineChartState);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const prepareDataLineChart = await prepareDateToGraphs(lineChartGraph);
-        setData(prepareDataLineChart);
-      } catch (error) {
-        createNotification(error.message);
-      }
-    };
-    fetchData();
-  }, [apiKey, createNotification, lineChartGraph]);
+    setData({
+      apiKey,
+      createNotification,
+    });
+  }, [apiKey]);
 
   const firstPrice = data[0]?.close;
   const lastPrice = data[data.length - 1]?.close;
