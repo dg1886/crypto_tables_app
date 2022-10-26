@@ -1,11 +1,5 @@
-import { useContext, useState } from "react";
-import { useRecoilValue } from "recoil";
-
-import { BtcUsdOHLCRequest, ValidPeriods } from "../../../../api/coinapi";
-import { ErrorContext } from "../../../../services/errorContext";
-import { defaultApiKeyState } from "../../../../state/atoms/apiKeysState";
+import { ValidPeriods } from "../../../../api/coinapi";
 import Typography from "../../../CommonUI/Typography";
-import { prepareDateToGraphs } from "../../../Helpers/prepareDatatoGraphs";
 import PeriodButton from "./style";
 
 const buttons = [
@@ -28,31 +22,14 @@ const buttons = [
 ];
 
 const Periods = ({
-  setData,
-  setPeriod,
+  onChange,
+  actibePeriod,
 }) => {
-  const [activeButton, setActiveButton] = useState(ValidPeriods.DAY);
-  const { createNotification } = useContext(ErrorContext);
-
-  const apiKey = useRecoilValue(defaultApiKeyState);
-
-  const handlePeriod = async (item) => {
-    try {
-      const data = await BtcUsdOHLCRequest(item.value, apiKey);
-      const prepareDataMainGraph = prepareDateToGraphs(data);
-      setData(prepareDataMainGraph);
-      setActiveButton(item.value);
-      setPeriod(item.value);
-    } catch (error) {
-      createNotification(error.message);
-    }
-  };
-
   return buttons.map((item) => {
-    const isActive = activeButton === item.value;
+    const isActive = actibePeriod === item.value;
 
     return (
-      <PeriodButton isActive={isActive} key={item.text} onClick={() => handlePeriod(item)}>
+      <PeriodButton isActive={isActive} key={item.text} onClick={() => onChange(item)}>
         <Typography variant={isActive ? "period_buttonActive" : "period_buttonNoActive"}>{item.text}</Typography>
       </PeriodButton>
     );

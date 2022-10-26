@@ -27,7 +27,9 @@ export const BtcUsdOHLCRequest = async (period, apiKey) => {
     baseURL,
     headers: { "X-CoinAPI-Key": `${apiKey}` },
   });
-  const time = dayjs().subtract(...(TimeInPeriods[period] || TimeInPeriods[ValidPeriods.DAY])).toISOString();
+  const time = dayjs()
+    .subtract(...(TimeInPeriods[period] || TimeInPeriods[ValidPeriods.DAY]))
+    .toISOString();
   const gerRes = await instance.get(
     `${getResponse}&period_id=${period}&time_start=${time}`,
   );

@@ -1,8 +1,10 @@
 import dayjs from "dayjs";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import { ErrorContext } from "../../../services/errorContext";
-import { InfoForGraphContext } from "../../../services/infoForGraphContext";
+import { defaultApiKeyState } from "../../../state/atoms/apiKeysState";
+import { transactionState } from "../../../state/atoms/infoGraphState";
 import FlexBox from "../../CommonUI/FlexBox";
 import BitcoinIcon from "../../CommonUI/Icons/BitcoinIcon";
 import CardanoIcon from "../../CommonUI/Icons/Cardano";
@@ -10,7 +12,6 @@ import PolkadotIcon from "../../CommonUI/Icons/Polkadot";
 import SolanaIcon from "../../CommonUI/Icons/Solana";
 import EthereumIcon from "../../CommonUI/Icons/UsdcIcon";
 import Typography from "../../CommonUI/Typography";
-import { prepareDateToGraphs } from "../../Helpers/prepareDatatoGraphs";
 import Transaction, { Content, GridTableBody, Tittle } from "./style";
 
 const coinNames = [
@@ -42,21 +43,17 @@ const coinNames = [
 ];
 
 const TransactionBar = () => {
-  const [data, setData] = useState([]);
   const { createNotification } = useContext(ErrorContext);
-  const { transactionGraph } = useContext(InfoForGraphContext);
+  const apiKey = useRecoilValue(defaultApiKeyState);
+  const [data, setData] = useRecoilState(transactionState);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const prepareData = await prepareDateToGraphs(transactionGraph);
-        setData(prepareData);
-      } catch (error) {
-        createNotification(error.message);
-      }
-    };
-    fetchData();
-  }, [createNotification, transactionGraph]);
+    setData({
+      apiKey,
+      createNotification,
+    });
+  }, [apiKey]);
+
   return (
     <Transaction>
       <Tittle>
