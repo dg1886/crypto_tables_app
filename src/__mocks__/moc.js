@@ -1,4 +1,4 @@
-export const MOC = {
+export const mockGraph = {
   mainGraph: [
     {
       time_period_start: "2022-04-01T00:00:00.0000000Z",

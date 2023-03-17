@@ -1,10 +1,11 @@
 import {
-  createContext, useCallback, useContext, useEffect, useState,
+  createContext, useContext, useEffect, useState,
 } from "react";
 import { useRecoilValue } from "recoil";
 
+import { mockGraph } from "../__mocks__/moc";
 import { BtcUsdOHLCRequest, ValidPeriods } from "../api/coinapi";
-import { MOC } from "../mocData/moc";
+import { synchronousRequst } from "../components/Helpers/asyncRecursion";
 import { defaultApiKeyState } from "../state/atoms/apiKeysState";
 import { ErrorContext } from "./errorContext";
 
@@ -33,31 +34,14 @@ const InfoForGraphContextProvider = ({ children }) => {
 
   const storageUseMoc = localStorage.getItem("useMoc");
 
-  const synchronousRequst = useCallback(async (reqArr, onError) => {
-    try {
-      const [requestFunc, ...otherReq] = reqArr;
-      const result = await requestFunc();
-
-      if (otherReq.length === 0) {
-        return [result];
-      }
-
-      const callRecursion = await synchronousRequst(otherReq);
-      return [result, ...callRecursion];
-    } catch (error) {
-      onError(error.message);
-      return null;
-    }
-  }, []);
-
   useEffect(() => {
     if (storageUseMoc === "true") {
       setInfoGraph({
-        mainGraph: MOC.mainGraph,
-        lineChartGraph: MOC.lineChartGraph,
-        transactionGraph: MOC.transactionGraph,
-        marketingGraph: MOC.marketingGraph,
-        marketingNumbers: MOC.marketingNumbers,
+        mainGraph: mockGraph.mainGraph,
+        lineChartGraph: mockGraph.lineChartGraph,
+        transactionGraph: mockGraph.transactionGraph,
+        marketingGraph: mockGraph.marketingGraph,
+        marketingNumbers: mockGraph.marketingNumbers,
       });
       return;
     }
@@ -67,6 +51,7 @@ const InfoForGraphContextProvider = ({ children }) => {
         transactionGraph,
         marketingGraph,
         marketingNumbers] = await synchronousRequst(arrayRequests, createNotification);
+
       setInfoGraph({
         mainGraph,
         lineChartGraph,
